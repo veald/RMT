@@ -1,0 +1,23 @@
+﻿
+@{
+    ViewBag.Title = "Projects";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Projects</h2>
+
+<div class="image-zoom-container">
+
+    @foreach (var imgPath in Directory.GetFiles(Server.MapPath("~/Content/Images"), "*.jpg"))
+    {
+        var img = new FileInfo(imgPath);
+        <div class="zoom-container">
+            <a href="#">
+                <img src="@Url.Content(String.Format("~/Content/Images/{0}", img.Name))" />
+            </a>
+
+        </div>
+    }
+
+</div>
+
