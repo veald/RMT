@@ -15,7 +15,7 @@ namespace RMT.Controllers
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
+            ViewBag.Message = "Vous avez un projet? n'hesitez pas à me contacter.";
 
             return View();
         }
