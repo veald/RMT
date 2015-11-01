@@ -72,3 +72,6 @@ c:\users\veald\documents\visual studio 2013\Projects\RMT\RMT\bin\fr\Microsoft.Ow
 c:\users\veald\documents\visual studio 2013\Projects\RMT\RMT\obj\Debug\RMT.csprojResolveAssemblyReference.cache
 c:\users\veald\documents\visual studio 2013\Projects\RMT\RMT\obj\Debug\RMT.dll
 c:\users\veald\documents\visual studio 2013\Projects\RMT\RMT\obj\Debug\RMT.pdb
+C:\Users\veald\Documents\Visual Studio 2013\Projects\RMT\RMT\bin\AutoMapper.Net4.dll
+C:\Users\veald\Documents\Visual Studio 2013\Projects\RMT\RMT\bin\AutoMapper.dll
+C:\Users\veald\Documents\Visual Studio 2013\Projects\RMT\RMT\bin\AutoMapper.xml
