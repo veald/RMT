@@ -10,7 +10,7 @@ namespace RMT.Models
     {
         public int ProjectId { get; set; }
 
-        [Display(Name = "Pseudo")]
+        [Display(Name = "Projet")]
         public string Name { get; set; }
 
         public string Description { get; set; }

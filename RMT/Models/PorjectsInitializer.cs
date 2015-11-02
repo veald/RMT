@@ -38,40 +38,82 @@ namespace RMT.Models
                     ProjectId = 1,
                     PictureName = "Lorem Ipsum",
                     Description = "Bla bla bla bla bla bla bla ",
-                    Path = "~/Content/Images/Projects/Project2/Photo1.jpg"
+                    Path = "~/Content/Images/Projects/Project1/Photo1.jpg"
                 },
                 new Picture {
                     ProjectId = 1,
+                    PictureName = "Lorem Ipsum",
+                    Description = "Bla bla bla bla bla bla bla ",
+                    Path = "~/Content/Images/Projects/Project1/Photo2.jpg"
+                },
+                new Picture {
+                    ProjectId = 1,
+                    PictureName = "Lorem Ipsum",
+                    Description = "Bla bla bla bla bla bla bla ",
+                    Path = "~/Content/Images/Projects/Project1/Photo3.jpg"
+                },
+                 new Picture {
+                    ProjectId = 1,
+                    PictureName = "Lorem Ipsum",
+                    Description = "Bla bla bla bla bla bla bla ",
+                    Path = "~/Content/Images/Projects/Project1/Photo4.jpg"
+                },
+                 new Picture {
+                    ProjectId = 1,
+                    PictureName = "Lorem Ipsum",
+                    Description = "Bla bla bla bla bla bla bla ",
+                    Path = "~/Content/Images/Projects/Project1/Photo5.jpg"
+                },
+                 new Picture {
+                    ProjectId = 1,
+                    PictureName = "Lorem Ipsum",
+                    Description = "Bla bla bla bla bla bla bla ",
+                    Path = "~/Content/Images/Projects/Project1/Photo6.jpg"
+                },
+                 new Picture {
+                    ProjectId = 1,
+                    PictureName = "Lorem Ipsum",
+                    Description = "Bla bla bla bla bla bla bla ",
+                    Path = "~/Content/Images/Projects/Project1/Photo7.jpg"
+                },
+                new Picture {
+                    ProjectId = 2,
+                    PictureName = "Lorem Ipsum",
+                    Description = "Bla bla bla bla bla bla bla ",
+                    Path = "~/Content/Images/Projects/Project2/Photo1.jpg"
+                },
+                new Picture {
+                    ProjectId = 2,
                     PictureName = "Lorem Ipsum",
                     Description = "Bla bla bla bla bla bla bla ",
                     Path = "~/Content/Images/Projects/Project2/Photo2.jpg"
                 },
                 new Picture {
-                    ProjectId = 1,
+                    ProjectId = 2,
                     PictureName = "Lorem Ipsum",
                     Description = "Bla bla bla bla bla bla bla ",
                     Path = "~/Content/Images/Projects/Project2/Photo3.jpg"
                 },
                  new Picture {
-                    ProjectId = 1,
+                    ProjectId = 2,
                     PictureName = "Lorem Ipsum",
                     Description = "Bla bla bla bla bla bla bla ",
                     Path = "~/Content/Images/Projects/Project2/Photo4.jpg"
                 },
                  new Picture {
-                    ProjectId = 1,
+                    ProjectId = 2,
                     PictureName = "Lorem Ipsum",
                     Description = "Bla bla bla bla bla bla bla ",
                     Path = "~/Content/Images/Projects/Project2/Photo5.jpg"
                 },
                  new Picture {
-                    ProjectId = 1,
+                    ProjectId = 2,
                     PictureName = "Lorem Ipsum",
                     Description = "Bla bla bla bla bla bla bla ",
                     Path = "~/Content/Images/Projects/Project2/Photo6.jpg"
                 },
                  new Picture {
-                    ProjectId = 1,
+                    ProjectId = 2,
                     PictureName = "Lorem Ipsum",
                     Description = "Bla bla bla bla bla bla bla ",
                     Path = "~/Content/Images/Projects/Project2/Photo7.jpg"
