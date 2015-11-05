@@ -20,6 +20,7 @@
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -189,16 +190,6 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\images\Home\accueil_01.jpg" />
     <Content Include="Content\images\Home\accueil_01_web.jpg" />
-    <Content Include="Content\images\Project1\Photo1.jpg" />
-    <Content Include="Content\images\Project1\Photo2.jpg" />
-    <Content Include="Content\images\Project1\Photo3.jpg" />
-    <Content Include="Content\images\Project1\Photo4.jpg" />
-    <Content Include="Content\images\Project1\Photo5.jpg" />
-    <Content Include="Content\images\Project1\Photo6.jpg" />
-    <Content Include="Content\images\Project1\Photo7.jpg" />
-    <Content Include="Content\images\Project1\Photo8.jpg" />
-    <Content Include="Content\images\Project1\Photo9.jpg" />
-    <Content Include="Content\images\Project1\Title.jpg" />
     <Content Include="Content\images\Projects\Project1\Photo1.jpg" />
     <Content Include="Content\images\Projects\Project1\Photo2.jpg" />
     <Content Include="Content\images\Projects\Project1\Photo3.jpg" />
@@ -216,7 +207,6 @@
     <Content Include="Content\images\Projects\Project2\Photo5.jpg" />
     <Content Include="Content\images\Projects\Project2\Photo6.jpg" />
     <Content Include="Content\images\Projects\Project2\Photo7.jpg" />
-    <Content Include="Content\images\Projects\Project2\Photo8.jpg" />
     <Content Include="Content\images\Projects\Project2\Photo9.jpg" />
     <Content Include="Content\images\Projects\Project2\Title.jpg" />
     <Content Include="favicon.ico" />
@@ -226,6 +216,12 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ClassDiagram1.cd" />
+    <None Include="Properties\PublishProfiles\auto publishing.pubxml" />
+    <None Include="Properties\PublishProfiles\MD Azure.pubxml" />
+    <None Include="Properties\PublishProfiles\miltondedieu - FTP %282%29.pubxml" />
+    <None Include="Properties\PublishProfiles\miltondedieu - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\miltondedieu - Web Deploy %282%29.pubxml" />
+    <None Include="Properties\PublishProfiles\miltondedieu - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\test pub.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />

@@ -142,3 +142,17 @@ footer {position: absolute; bottom: 0;}
 .btn-project{
     background-image: url('images/Home/accueil_01_web.jpg');
 }
+
+.texted-image { 
+   position: relative; 
+   width: 100%; /* for IE 6 */
+}
+
+.text-on-image { 
+   position: absolute; 
+   font-size: 30px;
+   background-color: rgba(0,0,0,0.8);
+   bottom: 5px; 
+   left: 5px; 
+   /*width: 100%;*/ 
+}
