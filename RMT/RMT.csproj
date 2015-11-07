@@ -219,8 +219,10 @@
     <None Include="Properties\PublishProfiles\auto publishing.pubxml" />
     <None Include="Properties\PublishProfiles\MD Azure.pubxml" />
     <None Include="Properties\PublishProfiles\miltondedieu - FTP %282%29.pubxml" />
+    <None Include="Properties\PublishProfiles\miltondedieu - FTP %283%29.pubxml" />
     <None Include="Properties\PublishProfiles\miltondedieu - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\miltondedieu - Web Deploy %282%29.pubxml" />
+    <None Include="Properties\PublishProfiles\miltondedieu - Web Deploy %283%29.pubxml" />
     <None Include="Properties\PublishProfiles\miltondedieu - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\test pub.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />

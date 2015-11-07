@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="RMT.Models.ProjectContext">
+    <Position X="0.75" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIQA=</HashCode>
+      <FileName>Models\ProjectContext.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RMT.Models.Project">
+    <Position X="3" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAEAAAgAAIAAAAAAIQgBAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Project.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RMT.Models.Picture">
+    <Position X="5.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAgAAAAgAAIAAAAACAAABAAAABAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Picture.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RMT.Models.Comment">
+    <Position X="8.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAAAAAAAAAIABAAAAAAAAABAgAwAAAAAEAAA=</HashCode>
+      <FileName>Models\Comment.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

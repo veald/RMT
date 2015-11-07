@@ -8,7 +8,7 @@
     <WebStackScaffolding_LayoutPageFile>~/Views/Shared/_Layout.cshtml</WebStackScaffolding_LayoutPageFile>
     <WebStackScaffolding_IsAsyncSelected>False</WebStackScaffolding_IsAsyncSelected>
     <WebStackScaffolding_ViewDialogWidth>600</WebStackScaffolding_ViewDialogWidth>
-    <NameOfLastUsedPublishProfile>miltondedieu - Web Deploy %282%29</NameOfLastUsedPublishProfile>
+    <NameOfLastUsedPublishProfile>miltondedieu - Web Deploy %283%29</NameOfLastUsedPublishProfile>
     <WebStackScaffolding_DbContextTypeFullName>RMT.Models.ProjectContext</WebStackScaffolding_DbContextTypeFullName>
     <WebStackScaffolding_IsViewGenerationSelected>True</WebStackScaffolding_IsViewGenerationSelected>
   </PropertyGroup>

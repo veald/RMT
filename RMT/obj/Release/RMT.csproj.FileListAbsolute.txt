@@ -149,3 +149,6 @@ C:\Users\milton.dedieu\Documents\GitHubVisualStudio\RMT\RMT\bin\fr\Microsoft.Owi
 C:\Users\milton.dedieu\Documents\GitHubVisualStudio\RMT\RMT\obj\Release\RMT.csprojResolveAssemblyReference.cache
 C:\Users\milton.dedieu\Documents\GitHubVisualStudio\RMT\RMT\obj\Release\RMT.dll
 C:\Users\milton.dedieu\Documents\GitHubVisualStudio\RMT\RMT\obj\Release\RMT.pdb
+C:\Users\veald\documents\visual studio 2013\Projects\RMT\RMT\bin\AutoMapper.Net4.dll
+C:\Users\veald\documents\visual studio 2013\Projects\RMT\RMT\bin\AutoMapper.dll
+C:\Users\veald\documents\visual studio 2013\Projects\RMT\RMT\bin\AutoMapper.xml

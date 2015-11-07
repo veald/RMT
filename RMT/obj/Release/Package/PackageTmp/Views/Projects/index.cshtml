@@ -5,30 +5,16 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
-
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.ImagePath)
+            Projet
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Description)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Status)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.BeginDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.EndDate)
+            Détail
         </th>
         <th></th>
     </tr>
@@ -36,23 +22,16 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            <img src="@Url.Content(item.ImagePath)" style="height:150px;" />
+            <div class="texted-image">
+                <a href="@Url.Action("Details", "Projects", new { id=item.ProjectId })"><img src="@Url.Content(item.ImagePath)" style="height:300px;" /></a>
+                <div class="text-on-image">@Html.DisplayFor(modelItem => item.Name)</div>
+            </div>
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Description)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Status)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.BeginDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.EndDate)
-        </td>
+            @Html.DisplayNameFor(model => model.Name) : @Html.DisplayFor(modelItem => item.Description)<br />
+            @Html.DisplayNameFor(model => model.Status) : @Html.DisplayFor(modelItem => item.Status)<br />
+            @Html.DisplayNameFor(model => model.BeginDate) : @Html.DisplayFor(modelItem => item.BeginDate)<br />
+            @Html.DisplayNameFor(model => model.EndDate) : @Html.DisplayFor(modelItem => item.EndDate)<br /> 
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.ProjectId }) |
             @Html.ActionLink("Details", "Details", new { id=item.ProjectId }) |
