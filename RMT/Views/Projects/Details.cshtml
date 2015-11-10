@@ -79,7 +79,7 @@
             var img = new FileInfo(item.Path);
             <div class="zoom-container">
                 <a href="/Projects/Detail?imgSrc=@img.Name">
-                    <img src="@Url.Content(String.Format("/Content/Images/Projects/Project{0}/{1}", Model.ProjectId, img.Name))" />
+                    <img src="@Url.Content(String.Format("~/Content/Images/{0}", img.Name))" />
                 </a>
             </div>
         }

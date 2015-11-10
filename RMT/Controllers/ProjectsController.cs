@@ -27,12 +27,8 @@ namespace RMT.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-
-            //Project project = db.Projects.Include(p => p.Pictures).Find(id);
-            Project project = db.Projects
-                        .Where(p => p.ProjectId == id) 
-                        .Include("Pictures") 
-                        .FirstOrDefault(); 
+            
+            Project project = db.Projects.Find(id);
             
             /*
             var projects = new List<Project>();
