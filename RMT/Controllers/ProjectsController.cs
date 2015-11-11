@@ -28,8 +28,8 @@ namespace RMT.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             
-            Project project = db.Projects.Find(id);
-            
+            //Project project = db.Projects.Find(id);
+
             /*
             var projects = new List<Project>();
             var pictures = new List<Picture>();
@@ -40,6 +40,11 @@ namespace RMT.Controllers
                          where pr.ProjectId == id
                          select pr;
             */
+            Project project = db.Projects
+                                    .Where(p => p.ProjectId == id)
+                                    .Include("Pictures")
+                                    .FirstOrDefault();
+
             if (project == null)
             {
                 return HttpNotFound();

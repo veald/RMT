@@ -1,30 +1,23 @@
 ﻿@{
-    ViewBag.Title = "Resman Mortorcycle Torrefactoring";
+    ViewBag.Title = "Resman Mortorcycle Torrefactory";
 }
 
-<div class="jumbotron image-accueil-background">
-    <div class="content-accueil-background">
-        <h1>Bienvenue</h1>
-        <p class="lead">
-            Cafe Racer's gentlemen's place.
-        </p>
-    </div>
-    
-</div>
+
+
 <div class="row">
     <div class="col-md-4">
         <h2>Mes projets</h2>
-        <p>Découvrez et suivez mes projets.</p>
-        <p><a class="btn btn-default" href="Projects">Go</a></p>
+        <p><a class="btn btn-default" href="@Url.Action("Index", "Projects")">Découvrez mes projets</a></p>
     </div>
+
     <div class="col-md-4">
         <h2>Contact</h2>
-        <p>Un projet à soumettre?</p>
-        <p><a class="btn btn-default" href="Home/Contact">Go</a></p>
+        <p><a class="btn btn-default" href="@Url.Action("Contact", "Home")">Soumettre un projet</a></p>
     </div>
-    <div class="col-md-4">
+    
+    <div class=" col-md-4">
         <h2>Forum</h2>
-        <p>Tutoriaux et échanges d'astuces</p>
-        <p><a class="btn btn-default" href="">Go</a></p>
+        <p><a class="btn btn-default" href="">Goodies</a></p>
     </div>
+
 </div>

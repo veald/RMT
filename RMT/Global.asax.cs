@@ -16,7 +16,7 @@ namespace RMT
         protected void Application_Start()
         {
             //Initializing
-            Database.SetInitializer<ProjectContext>(new PorjectsInitializer());
+            //Database.SetInitializer<ProjectContext>(new PorjectsInitializer());
             
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
