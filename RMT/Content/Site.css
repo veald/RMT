@@ -1,7 +1,7 @@
 ﻿body {
     padding-top: 50px;
     padding-bottom: 20px;
-    font-size: 11px;
+    font-size: 12px;
     background-color: rgba(0, 0, 0, .9) ;
     color: #675e4d;
       
@@ -21,6 +21,7 @@ a:focus {
 
 /* Set padding to keep content from hitting the edges */
 .body-content {
+    position: relative;
     padding-left: 15px;
     padding-right: 15px;
     /*border: 1px solid #666666;*/
@@ -137,7 +138,10 @@ textarea {
     text-shadow: 1px 1px 1px #000000;
 }
  
-footer {position: absolute; bottom: 0;}
+
+.footer{
+    position: relative;
+}
 
 .btn-project{
     background-image: url('images/Home/accueil_01_web.jpg');
@@ -155,4 +159,7 @@ footer {position: absolute; bottom: 0;}
    bottom: 5px; 
    left: 5px; 
    /*width: 100%;*/ 
+}
+.thumbnail{
+    background-color: #675e4d;
 }

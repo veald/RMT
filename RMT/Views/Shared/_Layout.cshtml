@@ -22,10 +22,10 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Projects", "Index", "Projects")</li>
+                    <li>@Html.ActionLink("Accueil", "Index", "Home")</li>
+                    <li>@Html.ActionLink("Projets", "Index", "Projects")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                    <li>@Html.ActionLink("À propos de", "About", "Home")</li>
+                    @*<li>@Html.ActionLink("À propos de", "About", "Home")</li>*@
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
@@ -41,14 +41,11 @@
         </div>
     </div>
 
-    <div class="container body-content">
-        @RenderBody()
-        
-        <footer class="footer">
-            <div class="container">
-                &copy; @DateTime.Now.Year - Milton 
-            </div>
-        </footer>
+    <div class="container body-content" >
+        <div class="main">
+            @RenderBody()
+        </div>
+        <div class="footer">&copy; @DateTime.Now.Year - Milton DEDIEU</div>
     </div>
 
     @Scripts.Render("~/bundles/jquery")

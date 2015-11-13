@@ -8,36 +8,33 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table class="table">
-    <tr>
-        <th>
-            Projet
-        </th>
-        <th>
-            Détail
-        </th>
-        <th></th>
-    </tr>
+<div class="row">
+    @foreach (var item in Model)
+    {
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            <div class="texted-image">
-                <a href="@Url.Action("Details", "Projects", new { id=item.ProjectId })"><img src="@Url.Content(item.ImagePath)" style="height:300px;" /></a>
-                <div class="text-on-image">@Html.DisplayFor(modelItem => item.Name)</div>
+        <div class="col-sm-6 col-md-4">
+            <div class="thumbnail">
+                <div class="texted-image">
+                    <a href="@Url.Action("Details", "Projects", new { id=item.ProjectId })">
+                        <img src="@Url.Content(item.ImagePath)" style="max-width:100%;max-height:100%;" />
+                    </a>
+                    <div class="text-on-image">@Html.DisplayFor(modelItem => item.Name)</div>
+                </div>
+                <div class="caption">
+                    <p>
+                        @Html.DisplayNameFor(model => model.Name) : @Html.DisplayFor(modelItem => item.Description)<br />
+                        @Html.DisplayNameFor(model => model.Status) : @Html.DisplayFor(modelItem => item.Status)<br />
+                        @Html.DisplayNameFor(model => model.BeginDate) : @Html.DisplayFor(modelItem => item.BeginDate)<br />
+                        @Html.DisplayNameFor(model => model.EndDate) : @Html.DisplayFor(modelItem => item.EndDate)<br />
+                    </p>
+                    <p>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.ProjectId }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.ProjectId }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.ProjectId })
+                    </p>
+                </div>
             </div>
-        </td>
-        <td>
-            @Html.DisplayNameFor(model => model.Name) : @Html.DisplayFor(modelItem => item.Description)<br />
-            @Html.DisplayNameFor(model => model.Status) : @Html.DisplayFor(modelItem => item.Status)<br />
-            @Html.DisplayNameFor(model => model.BeginDate) : @Html.DisplayFor(modelItem => item.BeginDate)<br />
-            @Html.DisplayNameFor(model => model.EndDate) : @Html.DisplayFor(modelItem => item.EndDate)<br /> 
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ProjectId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ProjectId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ProjectId })
-        </td>
-    </tr>
-}
+        </div>
 
-</table>
+    }
+</div>
