@@ -1,4 +1,6 @@
 ﻿@model RMT.Models.IndexViewModel
+@using Microsoft.AspNet.Identity
+
 @{
     ViewBag.Title = "Gérer";
 }
@@ -10,6 +12,20 @@
     <h4>Changer les paramètres de votre compte</h4>
     <hr />
     <dl class="dl-horizontal">
+        @if (User.Identity.IsAuthenticated)
+        {
+        <dt>Infos / Rôles :</dt>
+        <dd>
+            @if (User.IsInRole("Admin"))
+            {
+                <p>Vous êtes Administrateur</p>
+            }
+            else
+            {
+                <p>Vous êtes authentifié en tant qu'utilisateur.</p>
+            }
+        </dd>
+        }
         <dt>Mot de passe :</dt>
         <dd>
             [
@@ -23,11 +39,13 @@
             }
             ]
         </dd>
-        <dt>Connexions externes :</dt>
+
+
+        @*<dt>Connexions externes :</dt>
         <dd>
             @Model.Logins.Count [
             @Html.ActionLink("Gérer", "ManageLogins") ]
-        </dd>
+        </dd>*@
         @*
             Les numéros de téléphone peuvent servir de second facteur de vérification dans un système d'authentification à 2 facteurs.
              
@@ -53,12 +71,12 @@
                 ]
             </dd>
         *@
-        <dt>Authentification à 2 facteurs :</dt>
+        @*<dt>Authentification à 2 facteurs :</dt>
         <dd>
             <p>
                 Aucun fournisseur d'authentification à 2 facteurs n'est configuré. Voir <a href="http://go.microsoft.com/fwlink/?LinkId=313242">cet article</a>
                pour savoir comment configurer cette application ASP.NET pour qu'elle prenne en charge l'authentification à 2 facteurs.
-            </p>
+            </p>*@
             @*@if (Model.TwoFactor)
                 {
 
@@ -75,6 +93,6 @@
                         <input type="submit" value="Activer" class="btn btn-link" />
                     </form>
                 }*@
-        </dd>
+        @*</dd>*@
     </dl>
 </div>

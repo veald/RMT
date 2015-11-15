@@ -5,9 +5,14 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+@if(User.IsInRole("Admin"))
+{
+    <p>
+        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+        @Html.ActionLink("Créer un nouveau projet", "Create")
+    </p>
+}
+
 <div class="row">
     @foreach (var item in Model)
     {
@@ -22,19 +27,25 @@
                 </div>
                 <div class="caption">
                     <p>
-                        @Html.DisplayNameFor(model => model.Name) : @Html.DisplayFor(modelItem => item.Description)<br />
+                        @Html.DisplayNameFor(model => model.Description) : @Html.DisplayFor(modelItem => item.Description)<br />
                         @Html.DisplayNameFor(model => model.Status) : @Html.DisplayFor(modelItem => item.Status)<br />
                         @Html.DisplayNameFor(model => model.BeginDate) : @Html.DisplayFor(modelItem => item.BeginDate)<br />
                         @Html.DisplayNameFor(model => model.EndDate) : @Html.DisplayFor(modelItem => item.EndDate)<br />
                     </p>
+
+                    @if (User.IsInRole("Admin"))
+                    {
                     <p>
+                        <span class="glyphicon glyphicon-pencil"></span>
                         @Html.ActionLink("Edit", "Edit", new { id = item.ProjectId }) |
-                        @Html.ActionLink("Details", "Details", new { id = item.ProjectId }) |
+                        <span class="glyphicon glyphicon-remove"></span>
                         @Html.ActionLink("Delete", "Delete", new { id = item.ProjectId })
                     </p>
+                    }
                 </div>
             </div>
         </div>
 
     }
 </div>
+

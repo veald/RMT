@@ -27,19 +27,7 @@ namespace RMT.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            
-            //Project project = db.Projects.Find(id);
-
-            /*
-            var projects = new List<Project>();
-            var pictures = new List<Picture>();
-
-
-            var project = from pr in projects
-                         join pi in pictures on pr.ProjectId equals pi.ProjectId
-                         where pr.ProjectId == id
-                         select pr;
-            */
+      
             Project project = db.Projects
                                     .Where(p => p.ProjectId == id)
                                     .Include("Pictures")
@@ -52,6 +40,12 @@ namespace RMT.Controllers
             return View(project);
         }
 
+        //public ActionResult GetPhotoAndComments(int? id)
+        //{
+        //    return Json(new { imagePath = "~/Content/images/Projects/Project1/Photo1.jpg"});
+        //}
+
+        [Authorize(Roles = "Admin")]
         // GET: Projects/Create
         public ActionResult Create()
         {
@@ -63,6 +57,7 @@ namespace RMT.Controllers
         // plus de détails, voir  http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public ActionResult Create([Bind(Include = "ProjectId,Name,Description,ImagePath,Status,BeginDate,EndDate")] Project project)
         {
             if (ModelState.IsValid)
@@ -75,6 +70,7 @@ namespace RMT.Controllers
             return View(project);
         }
 
+        [Authorize(Roles = "Admin")]
         // GET: Projects/Edit/5
         public ActionResult Edit(int? id)
         {
@@ -93,6 +89,7 @@ namespace RMT.Controllers
         // POST: Projects/Edit/5
         // Afin de déjouer les attaques par sur-validation, activez les propriétés spécifiques que vous voulez lier. Pour 
         // plus de détails, voir  http://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "ProjectId,Name,Description,ImagePath,Status,BeginDate,EndDate")] Project project)
@@ -107,6 +104,7 @@ namespace RMT.Controllers
         }
 
         // GET: Projects/Delete/5
+        [Authorize(Roles = "Admin")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -124,6 +122,7 @@ namespace RMT.Controllers
         // POST: Projects/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public ActionResult DeleteConfirmed(int id)
         {
             Project project = db.Projects.Find(id);

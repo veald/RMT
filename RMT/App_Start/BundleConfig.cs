@@ -23,10 +23,15 @@ namespace RMT
                       "~/Scripts/bootstrap.js",
                       "~/Scripts/respond.js"));
 
+            bundles.Add(new StyleBundle("~/bundles/colorbox").Include(
+                      "~/Scripts/colorbox/jquery.colorbox.js"));
+            
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
+                      "~/Content/colorbox.css",
                       "~/Content/site.css"));
 
+            
             // Définissez EnableOptimizations sur False pour le débogage. Pour plus d'informations,
             // visitez http://go.microsoft.com/fwlink/?LinkId=301862
             BundleTable.EnableOptimizations = true;

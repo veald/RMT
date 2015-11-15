@@ -45,11 +45,15 @@
         <div class="main">
             @RenderBody()
         </div>
+        <hr />
         <div class="footer">&copy; @DateTime.Now.Year - Milton DEDIEU</div>
     </div>
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/colorbox")
+
+
     @RenderSection("scripts", required: false)
 </body>
 </html>

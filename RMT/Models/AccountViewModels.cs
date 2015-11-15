@@ -69,6 +69,11 @@ namespace RMT.Models
         [Display(Name = "Courrier électronique")]
         public string Email { get; set; }
 
+
+        //[Required]
+        //[Display(Name = "Pseudo")]
+        //public string UserName { get; set; }
+        
         [Required]
         [StringLength(100, ErrorMessage = "La chaîne {0} doit comporter au moins {2} caractères.", MinimumLength = 6)]
         [DataType(DataType.Password)]

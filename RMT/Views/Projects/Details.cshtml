@@ -5,84 +5,72 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Details</h2>
+<h2>@Html.DisplayFor(model => model.Name)</h2>
 
 <div>
-    <h4>Project</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-
-        <dt>
             @Html.DisplayNameFor(model => model.Description)
         </dt>
-
         <dd>
             @Html.DisplayFor(model => model.Description)
         </dd>
-
         <dt>
             @Html.DisplayNameFor(model => model.ImagePath)
         </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ImagePath)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Status)
-        </dt>
-
         <dd>
             @Html.DisplayFor(model => model.Status)
         </dd>
-
         <dt>
             @Html.DisplayNameFor(model => model.BeginDate)
         </dt>
-
         <dd>
             @Html.DisplayFor(model => model.BeginDate)
         </dd>
-
         <dt>
             @Html.DisplayNameFor(model => model.EndDate)
         </dt>
-
         <dd>
             @Html.DisplayFor(model => model.EndDate)
         </dd>
-
     </dl>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ProjectId }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
 
+<div style="min-width: 50%; display: inline-block;">
+    <span class="glyphicon glyphicon-backward"></span> @Html.ActionLink("Retour", "Index")
+</div>
 
+@if (User.IsInRole("Admin"))
+{
+    <div style="width:49%; display: inline-block; text-align: right;">
+        <span class="glyphicon glyphicon-pencil"></span> @Html.ActionLink("Modifier", "Edit", new { id = Model.ProjectId })
+    </div>
+}
 
+<hr />
 
 @if(Model.Pictures != null)
 {
-    <div class="image-zoom-container">
-
-        
+    <div class="image-zoom-container">        
         @foreach (var item in Model.Pictures)
         {
             var img = new FileInfo(item.Path);
             <div class="zoom-container">
-                <a href="/Projects/Detail?imgSrc=@img.Name">
+                <a  class="gallery" href="@Url.Content(String.Format("/Content/Images/Projects/Project{0}/{1}", Model.ProjectId, img.Name))">
                     <img src="@Url.Content(String.Format("/Content/Images/Projects/Project{0}/{1}", Model.ProjectId, img.Name))" />
                 </a>
             </div>
         }
-
     </div>
+}
+
+
+@section scripts{
+    <script type="text/javascript">
+    $(document).ready(function () {
+        console.log("ready!");
+        $('a.gallery').colorbox({rel:"gallery", width: "85%", height: "85%" });
+   });
+    </script>
 }
