@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using RMT.Models;
+using System.IO;
 
 namespace RMT.Controllers
 {
@@ -78,7 +79,9 @@ namespace RMT.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+
             Project project = db.Projects.Find(id);
+            
             if (project == null)
             {
                 return HttpNotFound();
@@ -139,5 +142,66 @@ namespace RMT.Controllers
             }
             base.Dispose(disposing);
         }
+        
+        public ActionResult SaveUploadedFile([Bind(Include = "PictureId,ProjectId,PictureName,Description,Path")] Picture picture)
+        {
+            bool isSavedSuccessfully = true;
+            string fName = "";
+            try
+            {
+                foreach (string fileName in Request.Files)
+                {
+                    HttpPostedFileBase file = Request.Files[fileName];
+                    //Save file content goes here
+                    fName = file.FileName;
+                    if (file != null && file.ContentLength > 0)
+                    {
+
+                        var originalDirectory = new DirectoryInfo(string.Format("{0}Content\\Images\\Projects\\Project{1}", Server.MapPath(@"\"), picture.ProjectId));
+
+                        string pathString = System.IO.Path.Combine(originalDirectory.ToString());
+
+                        var fileName1 = Path.GetFileName(file.FileName);
+
+                        bool isExists = System.IO.Directory.Exists(pathString);
+
+                        if (!isExists)
+                            System.IO.Directory.CreateDirectory(pathString);
+
+                        var path = string.Format("{0}\\{1}", pathString, file.FileName);
+                        file.SaveAs(path);
+                        
+                        var relativePath = string.Format("~Content/Images/Projects/Project{0}/{1}", picture.ProjectId, file.FileName);
+                        
+                        if (ModelState.IsValid)
+                        {
+                            picture.Path = relativePath;
+                            db.Pictures.Add(picture);
+                            db.SaveChanges();
+                            return RedirectToAction("Index");
+                        }
+
+                    }
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+                isSavedSuccessfully = false;
+            }
+
+
+            if (isSavedSuccessfully)
+            {
+                return Json(new { Message = fName });
+            }
+            else
+            {
+                return Json(new { Message = "Error in saving file" });
+            }
+        }
+        
+        
     }
 }

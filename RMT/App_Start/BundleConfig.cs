@@ -25,10 +25,15 @@ namespace RMT
 
             bundles.Add(new StyleBundle("~/bundles/colorbox").Include(
                       "~/Scripts/colorbox/jquery.colorbox.js"));
-            
+
+            bundles.Add(new ScriptBundle("~/bundles/dropzonescripts").Include(
+                     "~/Scripts/dropzone/dropzone.js"));
+
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/colorbox.css",
+                      "~/Scripts/dropzone/css/basic.css",
+                      "~/Scripts/dropzone/css/dropzone.css",
                       "~/Content/site.css"));
 
             

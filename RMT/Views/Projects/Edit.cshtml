@@ -73,6 +73,61 @@
     </div>
 }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
+
+
+    <div>Ajouter des photos : </div>
+
+    <div>
+        <form action="~/Projects/SaveUploadedFile" method="post" enctype="multipart/form-data">
+
+
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+
+                <input type="hidden" name="ProjectId" value="@Model.ProjectId" />
+
+                <div class="form-group">
+                    <div class="control-label col-md-2">Nom</div>
+                    <div class="col-md-10">
+                        <input type="text" name="PictureName" class="form-control" />
+                    </div>
+                    <div class="control-label col-md-2">Description</div>
+                    <div class="col-md-10">
+                        <input type="text" name="Description" class="form-control" />
+                    </div>
+                    <div class="control-label col-md-2">Fichier</div>
+                    <div class="col-md-10">
+                        <input name="file" type="file" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Envoyer" class="btn btn-default" />
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </form>
+
+    </div>
+
+    <div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>
+
+    @section scripts{
+        <script type="text/javascript">
+
+            ////File Upload response from the server
+            //Dropzone.options.dropzoneForm = {
+            //    init: function () {
+            //        this.on("complete", function (data) {
+            //            var res = JSON.parse(data.xhr.responseText);
+            //        });
+            //    }
+            //};
+
+        </script>
+    }

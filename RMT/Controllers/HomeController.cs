@@ -22,7 +22,7 @@ namespace RMT.Controllers
 
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
+            ViewBag.Message = "Vous avez un projet? N'hesitez pas à me contacter.";
 
             return View();
         }
