@@ -4995,7 +4995,7 @@ a.thumbnail:focus {
 
 .thumbnail .caption {
   padding: 9px;
-  color: #333333;
+  color: #000;
 }
 
 .alert {

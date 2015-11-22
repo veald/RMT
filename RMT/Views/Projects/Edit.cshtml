@@ -5,15 +5,19 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Edit</h2>
+<h2>Modifier un projet</h2>
+
+<div>
+    <span class="glyphicon glyphicon-backward"></span> @Html.ActionLink("Retour", "Index")
+</div>
+
+<hr />
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>Project</h4>
-        <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.ProjectId)
 
@@ -33,13 +37,13 @@
             </div>
         </div>
 
-        <div class="form-group">
+        @*<div class="form-group">
             @Html.LabelFor(model => model.ImagePath, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.ImagePath, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.ImagePath, "", new { @class = "text-danger" })
             </div>
-        </div>
+        </div>*@
 
         <div class="form-group">
             @Html.LabelFor(model => model.Status, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -60,74 +64,101 @@
         <div class="form-group">
             @Html.LabelFor(model => model.EndDate, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.EndDate, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.EndDate, new { htmlAttributes = new { @class = "form-control"} })
                 @Html.ValidationMessageFor(model => model.EndDate, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
+                <input type="submit" value="Enregistrer" class="btn btn-default" />
             </div>
         </div>
     </div>
 }
 
 
+    <hr />
 
-    <div>Ajouter des photos : </div>
+    <div style="color: red; font-size:14px;" id="result"></div>
 
-    <div>
-        <form action="~/Projects/SaveUploadedFile" method="post" enctype="multipart/form-data">
+    <div class="thumbnail">
+        <h4 class="caption">
+            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+            Ajouter des photos        
+        </h4>
 
+        <div>
+            <form action="~/Projects/SaveUploadedFile" method="post" enctype="multipart/form-data" id="AddFilesForm">
 
-            @Html.AntiForgeryToken()
+                @Html.AntiForgeryToken()
 
-            <div class="form-horizontal">
+                <div class="form-horizontal">
 
-                <input type="hidden" name="ProjectId" value="@Model.ProjectId" />
+                    <input type="hidden" name="ProjectId" value="@Model.ProjectId" />
 
-                <div class="form-group">
-                    <div class="control-label col-md-2">Nom</div>
-                    <div class="col-md-10">
-                        <input type="text" name="PictureName" class="form-control" />
-                    </div>
-                    <div class="control-label col-md-2">Description</div>
-                    <div class="col-md-10">
-                        <input type="text" name="Description" class="form-control" />
-                    </div>
-                    <div class="control-label col-md-2">Fichier</div>
-                    <div class="col-md-10">
-                        <input name="file" type="file" class="form-control" />
-                    </div>
                     <div class="form-group">
-                        <div class="col-md-offset-2 col-md-10">
-                            <input type="submit" value="Envoyer" class="btn btn-default" />
+                        <div class="control-label col-md-2 caption">Nom</div>
+                        <div class="col-md-10">
+                            <input type="text" name="PictureName" class="form-control" />
                         </div>
                     </div>
-
+                    <div class="form-group">
+                        <div class="control-label col-md-2 caption">Description</div>
+                        <div class="col-md-10">
+                            <input type="text" name="Description" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="control-label col-md-2 caption">Fichier</div>
+                        <div class="col-md-10">
+                            <input name="Path" type="file" class="file" data-show-upload="false" data-show-caption="true"/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                <input type="submit" value="Envoyer" class="btn btn-default" />
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
-
-        </form>
-
+            </form>
+        </div>
     </div>
 
     <div>
-        @Html.ActionLink("Back to List", "Index")
+        <span class="glyphicon glyphicon-backward"></span> @Html.ActionLink("Retour", "Index")
     </div>
 
     @section scripts{
         <script type="text/javascript">
 
-            ////File Upload response from the server
-            //Dropzone.options.dropzoneForm = {
-            //    init: function () {
-            //        this.on("complete", function (data) {
-            //            var res = JSON.parse(data.xhr.responseText);
-            //        });
-            //    }
-            //};
+            $(function () {
+                $('#AddFilesForm').submit(function (e) {
+
+                    e.preventDefault();
+
+                    var formdata = (window.FormData) ? new FormData(this) : null;
+                    var data = (formdata !== null) ? formdata : $(this).serialize();
+
+                    $.ajax({
+                        url: this.action,
+                        type: this.method,
+                        contentType: false, // obligatoire pour de l'upload
+                        processData: false, // obligatoire pour de l'upload
+                        data: data,
+                        success: function (result) {
+                            $('#result').html(result.Message);
+                            resetForm($('#AddFilesForm'));
+                        }
+                    });
+                    return false;
+
+                });
+            });
+
+
 
         </script>
     }

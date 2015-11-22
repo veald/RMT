@@ -1,11 +1,8 @@
 ﻿body {
     padding-top: 50px;
     padding-bottom: 20px;
-    font-size: 12px;
     background-color: rgba(0, 0, 0, .9) ;
     color: #675e4d;
-      
-    
 }
 
 a {
@@ -162,7 +159,16 @@ textarea {
 }
 .thumbnail{
     background-color: #675e4d;
+
 }
+.thumbnail .caption {
+    color: black;
+}
+.caption a {
+    color: black;
+    text-decoration:underline;
+}
+
 
 #dropZone 
 {

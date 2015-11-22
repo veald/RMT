@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using RMT.Models;
+using RMT.Helpers;
 using System.IO;
 
 namespace RMT.Controllers
@@ -145,7 +146,7 @@ namespace RMT.Controllers
         
         public ActionResult SaveUploadedFile([Bind(Include = "PictureId,ProjectId,PictureName,Description,Path")] Picture picture)
         {
-            bool isSavedSuccessfully = true;
+            bool isSavedSuccessfully = false;
             string fName = "";
             try
             {
@@ -159,18 +160,23 @@ namespace RMT.Controllers
 
                         var originalDirectory = new DirectoryInfo(string.Format("{0}Content\\Images\\Projects\\Project{1}", Server.MapPath(@"\"), picture.ProjectId));
 
-                        string pathString = System.IO.Path.Combine(originalDirectory.ToString());
+                        string pathString = Path.Combine(originalDirectory.ToString());
 
                         var fileName1 = Path.GetFileName(file.FileName);
 
-                        bool isExists = System.IO.Directory.Exists(pathString);
+                        bool isExists = Directory.Exists(pathString);
 
                         if (!isExists)
-                            System.IO.Directory.CreateDirectory(pathString);
+                            Directory.CreateDirectory(pathString);
 
+                        //Save file
                         var path = string.Format("{0}\\{1}", pathString, file.FileName);
                         file.SaveAs(path);
-                        
+
+                        //Save thummbnail
+                        var thumbsPath = string.Format("{0}\\tn_{1}", pathString, file.FileName);
+                        FileHelper.SaveResizedImage(pathString, file.FileName, thumbsPath, 30);
+
                         var relativePath = string.Format("~Content/Images/Projects/Project{0}/{1}", picture.ProjectId, file.FileName);
                         
                         if (ModelState.IsValid)
@@ -178,27 +184,28 @@ namespace RMT.Controllers
                             picture.Path = relativePath;
                             db.Pictures.Add(picture);
                             db.SaveChanges();
-                            return RedirectToAction("Index");
+                            isSavedSuccessfully = true;
                         }
 
                     }
 
                 }
-
+                
             }
             catch (Exception ex)
             {
+                //console.writeline ex.Message;
                 isSavedSuccessfully = false;
             }
 
 
             if (isSavedSuccessfully)
             {
-                return Json(new { Message = fName });
+                return Json(new { uploaded = true,  Message = "Votre photo a été ajoutée" });
             }
             else
             {
-                return Json(new { Message = "Error in saving file" });
+                return Json(new { uploaded = false, Message = "Erreur : Photo non enregistrée" });
             }
         }
         
