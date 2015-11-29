@@ -5,15 +5,32 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-@if(User.IsInRole("Admin"))
-{
-    <p>
-        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-        @Html.ActionLink("Créer un nouveau projet", "Create")
-    </p>
-}
-
 <div class="row">
+
+    <div class="col-md-12">
+        <h1>
+            Mes Projets
+        </h1>
+        <p>
+            Nam finibus est id diam posuere hendrerit. Curabitur egestas quam sed egestas suscipit. Praesent euismod commodo facilisis. Nullam sed lobortis magna. Sed auctor vulputate lectus non pellentesque. Nam laoreet dui id erat semper volutpat. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Donec at consectetur diam, nec sollicitudin mi. Etiam vulputate mi nec malesuada rutrum.
+        </p>
+    </div>
+
+    <div>
+        <span class="glyphicon glyphicon-backward"></span> @Html.ActionLink("Retour", "Index", "Home")
+    </div>
+    
+    <hr />
+
+    @if (User.IsInRole("Admin"))
+    {
+        <p>
+            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+            @Html.ActionLink("Créer un nouveau projet", "Create")
+        </p>
+    }
+
+
     @foreach (var item in Model)
     {
 

@@ -9,6 +9,7 @@ using System.Web.Mvc;
 using RMT.Models;
 using RMT.Helpers;
 using System.IO;
+using System.Diagnostics;
 
 namespace RMT.Controllers
 {
@@ -25,6 +26,9 @@ namespace RMT.Controllers
         // GET: Projects/Details/5
         public ActionResult Details(int? id)
         {
+
+            createThumbnails();
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -194,7 +198,6 @@ namespace RMT.Controllers
             }
             catch (Exception ex)
             {
-                //console.writeline ex.Message;
                 isSavedSuccessfully = false;
             }
 
@@ -209,6 +212,72 @@ namespace RMT.Controllers
             }
         }
         
+
+        public void createThumbnails()
+        {
+            string tnFullPath;
+            string tnName;
+            
+            DirectoryInfo diTop = new DirectoryInfo(Server.MapPath("~/Content/Images/Projects"));
+            try
+            {
+                foreach (var di in diTop.EnumerateDirectories("*"))
+                {
+                    try
+                    {
+                        foreach (var fi in di.EnumerateFiles("*", SearchOption.AllDirectories))
+                        {
+                            tnName = "";
+                            tnFullPath = "";
+
+                            try
+                            {
+                                Debug.WriteLine("{0}\\{1}", fi.DirectoryName, fi.Name);
+                                
+                                tnName = "tn_" + fi.Name;
+                                tnFullPath = fi.DirectoryName + "\\" + tnName;
+
+                                if (!System.IO.File.Exists(tnFullPath) && fi.Name.Substring(0,3) != "tn_")
+                                {
+                                    Debug.WriteLine("creation of th thumbnails : {0}", tnName);
+                                    try
+                                    {
+                                        FileHelper.SaveResizedImage(fi.DirectoryName, fi.Name, tnName, 30);
+                                    }
+                                    catch (Exception)
+                                    {
+
+                                        throw new FileNotFoundException();
+                                    }   
+                                }
+                            }
+                            catch (UnauthorizedAccessException UnAuthFile)
+                            {
+                                Debug.WriteLine("UnAuthFile: {0}", UnAuthFile.Message);
+                            }
+                        }
+                    }
+                    catch (UnauthorizedAccessException UnAuthSubDir)
+                    {
+                        Debug.WriteLine("UnAuthSubDir: {0}", UnAuthSubDir.Message);
+                    }
+                }
+            }
+            catch (DirectoryNotFoundException DirNotFound)
+            {
+                Debug.WriteLine("{0}", DirNotFound.Message);
+            }
+            catch (UnauthorizedAccessException UnAuthDir)
+            {
+                Debug.WriteLine("UnAuthDir: {0}", UnAuthDir.Message);
+            }
+            catch (PathTooLongException LongPath)
+            {
+                Debug.WriteLine("{0}", LongPath.Message);
+            }
+            
+        }
+
         
     }
 }
