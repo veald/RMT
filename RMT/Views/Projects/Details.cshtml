@@ -59,6 +59,7 @@
             <div class="zoom-container">
                 <a  class="gallery" href="@Url.Content(String.Format("/Content/Images/Projects/Project{0}/{1}", Model.ProjectId, img.Name))" title="@item.Description">
                     <img src="@Url.Content(String.Format("/Content/Images/Projects/Project{0}/tn_{1}", Model.ProjectId, img.Name))" />
+                    @*style="height: 400px; width: 400px; -o-object-fit: cover; object-fit:  cover;"*@ 
                 </a>
             </div>
         }

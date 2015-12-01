@@ -5,5 +5,14 @@
 }
 
 <h1 class="text-danger">Erreur.</h1>
-<h2 class="text-danger">Une erreur s’est produite lors du traitement de la requête.</h2>
 
+@{
+    if (String.IsNullOrEmpty(ViewBag.errorMessage))
+    {
+        <h3 class="text-danger">Une erreur s’est produite lors du traitement de la requête.</h3>
+    }
+    else
+    {
+        <h3 class="text-danger">@ViewBag.errorMessage</h3>
+    }
+}

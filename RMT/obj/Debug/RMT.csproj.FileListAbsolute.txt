@@ -229,3 +229,8 @@ C:\Users\veald\Documents\Visual Studio 2015\Projects\RMT\RMT\bin\fr\Microsoft.Ow
 C:\Users\veald\Documents\Visual Studio 2015\Projects\RMT\RMT\obj\Debug\RMT.csprojResolveAssemblyReference.cache
 C:\Users\veald\Documents\Visual Studio 2015\Projects\RMT\RMT\obj\Debug\RMT.dll
 C:\Users\veald\Documents\Visual Studio 2015\Projects\RMT\RMT\obj\Debug\RMT.pdb
+C:\Users\veald\Documents\Visual Studio 2015\Projects\RMT\RMT\bin\SendGrid.dll
+C:\Users\veald\Documents\Visual Studio 2015\Projects\RMT\RMT\bin\SendGrid.SmtpApi.dll
+C:\Users\veald\Documents\Visual Studio 2015\Projects\RMT\RMT\bin\SendGridMail.dll
+C:\Users\veald\Documents\Visual Studio 2015\Projects\RMT\RMT\bin\System.Net.Http.Formatting.dll
+C:\Users\veald\Documents\Visual Studio 2015\Projects\RMT\RMT\bin\System.Net.Http.Formatting.xml

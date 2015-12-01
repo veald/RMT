@@ -38,7 +38,7 @@
             <div class="thumbnail">
                 <div class="texted-image">
                     <a href="@Url.Action("Details", "Projects", new { id=item.ProjectId })">
-                        <img src="@Url.Content(item.ImagePath)" style="max-width:100%;max-height:100%;" />
+                        <img src="@Url.Content(item.ImagePath)" style="max-width:100%;max-height:100%;"  />
                     </a>
                     <div class="text-on-image">@Html.DisplayFor(modelItem => item.Name)</div>
                 </div>
