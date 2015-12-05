@@ -30,6 +30,10 @@ namespace RMT
             bundles.Add(new ScriptBundle("~/bundles/dropzonescripts").Include(
                      "~/Scripts/dropzone/dropzone.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/jalert").Include(
+                     "~/Scripts/jAlert/jAlert-v3.js",
+                     "~/Scripts/jAlert/jAlert-functions.js"));
+
             bundles.Add(new ScriptBundle("~/bundles/MyScripts").Include(
                      "~/Scripts/MyScripts.js"));
             
@@ -39,6 +43,7 @@ namespace RMT
                       "~/Scripts/dropzone/css/basic.css",
                       "~/Scripts/dropzone/css/dropzone.css",
                       "~/Content/bootstrap-fileinput/css/fileinput.css",
+                      "~/Content/jAlert-v3.css",
                       "~/Content/site.css"));
 
             

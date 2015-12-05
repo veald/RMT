@@ -1,0 +1,29 @@
+﻿@model RMT.Models.Picture
+
+@{
+    ViewBag.Title = "Piture Details";
+}
+
+<div id="photoContent" style="background-color:#000;">
+    <h3>@Model.Description</h3>
+    <div style="max-height: 100%;">
+        <img src="@Url.Content(Model.Path)" alt="@Model.Description" style="width:100%;" id="pict_@Model.PictureId" />
+    </div>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            //blackAlert('hello', 'world');
+        });
+        $("#pict_@Model.PictureId").click(function (e) {
+            e.preventDefault();
+            $.ajax({
+                url: '@Url.Content(string.Format("/Projects/PhotoDetail/{0}", ViewBag.nextP))',
+                dataType: 'html',
+                success: function (code_html, statut) {
+                    $("#photoContent").find('script').remove();
+                    $("#photoContent").html(code_html);
+                }
+            });
+        })
+    </script>
+</div>

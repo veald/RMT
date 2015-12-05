@@ -46,10 +46,41 @@ namespace RMT.Controllers
             return View(project);
         }
 
-        //public ActionResult GetPhotoAndComments(int? id)
-        //{
-        //    return Json(new { imagePath = "~/Content/images/Projects/Project1/Photo1.jpg"});
-        //}
+        public PartialViewResult PhotoDetail(int id)
+        {
+            int nextPicture;
+            
+            Picture p = db.Pictures.Find(id);
+
+            if (p == null)
+            {
+                ViewBag.errorMessage = "Erreur";
+                return PartialView("~Views/Shared/Error.cshtml");
+            }
+
+            var result = db.Pictures
+                .Where(x => x.ProjectId == p.ProjectId)
+                .Where(x => x.PictureId > id)
+                .Select(x => x.PictureId)
+                .FirstOrDefault();
+
+            if (result != null)
+            {
+                nextPicture = result;
+            }
+            else
+            {
+                nextPicture = db.Pictures
+                    .Where(x => x.ProjectId == p.ProjectId)
+                    .Select(x => x.PictureId)
+                    .FirstOrDefault();
+            }
+
+            ViewBag.nextP = nextPicture;
+
+            
+            return PartialView(p); ;
+        }
 
         [Authorize(Roles = "Admin")]
         // GET: Projects/Create
@@ -246,8 +277,8 @@ namespace RMT.Controllers
                                     }
                                     catch (Exception)
                                     {
-
-                                        throw new FileNotFoundException();
+                                        Debug.WriteLine("File not found: {0}", fi.Name);
+                                        //throw new FileNotFoundException();
                                     }   
                                 }
                             }

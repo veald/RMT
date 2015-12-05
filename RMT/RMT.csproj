@@ -237,6 +237,7 @@
     <Content Include="Content\images\Projects\Project2\Photo7.jpg" />
     <Content Include="Content\images\Projects\Project2\Photo9.jpg" />
     <Content Include="Content\images\Projects\Project2\Title.jpg" />
+    <Content Include="Content\jAlert-v3.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -302,6 +303,10 @@
     <Content Include="Scripts\fileinput_locale_th.js" />
     <Content Include="Scripts\fileinput_locale_uk.js" />
     <Content Include="Scripts\fileinput_locale_zh.js" />
+    <Content Include="Scripts\jAlert\jAlert-functions.js" />
+    <Content Include="Scripts\jAlert\jAlert-functions.min.js" />
+    <Content Include="Scripts\jAlert\jAlert-v3.js" />
+    <Content Include="Scripts\jAlert\jAlert-v3.min.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -362,6 +367,7 @@
     <Content Include="Views\Projects\Details.cshtml" />
     <Content Include="Views\Projects\Edit.cshtml" />
     <Content Include="Views\Shared\Info.cshtml" />
+    <Content Include="Views\Projects\PhotoDetail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
