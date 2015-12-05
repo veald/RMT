@@ -3,6 +3,7 @@
     padding-bottom: 20px;
     background-color: rgba(0, 0, 0, .9) ;
     color: #675e4d;
+    font-size: 12px;
 }
 
 a {
@@ -147,6 +148,7 @@ textarea {
 .texted-image { 
    position: relative; 
    width: 100%; /* for IE 6 */
+   border: 4px white solid;
 }
 
 .text-on-image { 
@@ -157,9 +159,10 @@ textarea {
    left: 5px; 
    /*width: 100%;*/ 
 }
-.thumbnail{
+.thumbnail {
     background-color: #675e4d;
-
+    padding: 10px;
+    border: 1px black dotted;
 }
 .thumbnail .caption {
     color: black;

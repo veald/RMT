@@ -186,7 +186,7 @@ namespace RMT.Controllers
                     // Envoyer un message électronique avec ce lien
                     string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
                     var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
-                    await UserManager.SendEmailAsync(user.Id,"Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
+                    await UserManager.SendEmailAsync(user.Id,"RTM - Confirmation de votre email", "Veuilez confirmer votre adresse e-mail en cliquant <a href=\"" + callbackUrl + "\">ici</a>");
                     return RedirectToAction("Index", "Home");
                 }
                 AddErrors(result);
