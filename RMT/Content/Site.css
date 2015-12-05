@@ -207,3 +207,8 @@ textarea {
 .ja_body{
     background-color: #000;
 }
+
+.project-picture:hover{
+    cursor: pointer; 
+
+}
