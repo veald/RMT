@@ -50,7 +50,10 @@ namespace RMT.Controllers
         {
             int nextPicture;
             
-            Picture p = db.Pictures.Find(id);
+            Picture p = db.Pictures
+                    .Include("Comments")
+                    .Where(x => x.PictureId == id)
+                    .FirstOrDefault();
 
             if (p == null)
             {

@@ -23,7 +23,7 @@ namespace RMT.Models
         
         public Project Project { get; set; }
 
-        //public ICollection<Comment> Comments { get; set; }
+        public ICollection<Comment> Comments { get; set; }
 
     }
 }

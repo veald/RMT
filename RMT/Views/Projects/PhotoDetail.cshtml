@@ -8,7 +8,15 @@
     <h3>@Model.Description</h3>
     <div style="max-height: 100%;">
         <img src="@Url.Content(Model.Path)" alt="@Model.Description" style="width:100%;" id="pict_@Model.PictureId" />
+    <ul>
+        @foreach (var item in Model.Comments)
+        {
+            <li>@item.UserName : @item.Subject
+        </li>
+        }
+    </ul>
     </div>
+    
 
     <script type="text/javascript">
         $(document).ready(function () {
@@ -22,7 +30,7 @@
                 success: function (code_html, statut) {
                     $("#photoContent").find('script').remove();
                     $("#photoContent").html(code_html);
-                }
+                } 
             });
         })
     </script>

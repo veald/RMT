@@ -57,9 +57,7 @@
         {
             var img = new FileInfo(item.Path);
             <div class="zoom-container">
-                @*<a  class="gallery" href="@Url.Content(String.Format("/Content/Images/Projects/Project{0}/{1}", Model.ProjectId, img.Name))" title="@item.Description">*@
-                    <img src="@Url.Content(String.Format("/Content/Images/Projects/Project{0}/tn_{1}", Model.ProjectId, img.Name))" class="project-picture" id="@item.PictureId" title="@item.PictureName"/>
-                @*</a>*@
+                <img src="@Url.Content(String.Format("/Content/Images/Projects/Project{0}/tn_{1}", Model.ProjectId, img.Name))" class="project-picture" id="@item.PictureId" title="@item.PictureName"/>
             </div>
         }
     </div>
