@@ -49,7 +49,8 @@ namespace RMT.Controllers
         public PartialViewResult PhotoDetail(int id)
         {
             int nextPicture;
-            
+            int prevPicture;
+
             Picture p = db.Pictures
                     .Include("Comments")
                     .Where(x => x.PictureId == id)
@@ -60,7 +61,8 @@ namespace RMT.Controllers
                 ViewBag.errorMessage = "Erreur";
                 return PartialView("~Views/Shared/Error.cshtml");
             }
-
+            
+            //get next Id
             var result = db.Pictures
                 .Where(x => x.ProjectId == p.ProjectId)
                 .Where(x => x.PictureId > id)
@@ -81,6 +83,28 @@ namespace RMT.Controllers
 
             ViewBag.nextP = nextPicture;
 
+            //get previous Id
+            result = db.Pictures
+                .OrderByDescending(y => y.PictureId)
+                .Where(x => x.ProjectId == p.ProjectId)
+                .Where(x => x.PictureId < id)
+                .Select(x => x.PictureId)
+                .FirstOrDefault();
+
+            if (result != null)
+            {
+                prevPicture = result;
+            }
+            else
+            {
+                prevPicture = 1;
+                //prevPicture = db.Pictures
+                //    .Where(x => x.ProjectId == p.ProjectId)
+                //    .Select(x => x.PictureId)
+                //    .FirstOrDefault();
+            }
+
+            ViewBag.prevP = prevPicture;
             
             return PartialView(p); ;
         }

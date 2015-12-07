@@ -4,25 +4,55 @@
     ViewBag.Title = "Piture Details";
 }
 
-<div id="photoContent" style="background-color:#000;">
-    <h3>@Model.Description</h3>
-    <div style="max-height: 100%;">
-        <img src="@Url.Content(Model.Path)" alt="@Model.Description" style="width:100%;" id="pict_@Model.PictureId" />
-    <ul>
-        @foreach (var item in Model.Comments)
-        {
-            <li>@item.UserName : @item.Subject
-        </li>
-        }
-    </ul>
+<div id="photoContent" style="background-color:#000; max-height: 100%; width: 100%;">
+  
+    <h4>@Model.PictureId - @Model.PictureName</h4>
+    <p>@Model.Description</p>
+        
+    <div style="font-size:28px; position: absolute; color: rgba(255,255,255,0.5)">
+        <div id="bt-prev" style="display:inline-block"><span class="glyphicon glyphicon-backward"></span></div>
+        <div id="bt-next" style="display:inline-block"><span class="glyphicon glyphicon-forward" ></span></div>
     </div>
-    
+
+    <img src="@Url.Content(Model.Path)" alt="@Model.Description" style="width: 100%; max-height: 80%; margin:auto;" id="pict_@Model.PictureId" />
+
+    <ul>
+    @foreach (var item in Model.Comments)
+    {
+        <li>
+            <b>@item.UserName - @item.Subject</b> (@item.CreatedDate)              
+            <ul>
+                <li>@item.Body</li>
+            </ul>
+        </li>
+    }
+    </ul>
+
+    @if(User.Identity.IsAuthenticated)
+    {
+    <form action="~/Projects/AddComment" method="post">
+        Titre : <br /><input type="text" name="Subject" /><br />
+        Commentaire : <br /><textarea name="Body"></textarea>
+    </form>
+    }
 
     <script type="text/javascript">
         $(document).ready(function () {
             //blackAlert('hello', 'world');
+            //$("#jAlertDiv").height("100%"); $("#jAlertDiv").right("100%");
         });
-        $("#pict_@Model.PictureId").click(function (e) {
+        $("#bt-prev").click(function (e) {
+            e.preventDefault();
+            $.ajax({
+                url: '@Url.Content(string.Format("/Projects/PhotoDetail/{0}", ViewBag.prevP))',
+                dataType: 'html',
+                success: function (code_html, statut) {
+                    $("#photoContent").find('script').remove();
+                    $("#photoContent").html(code_html);
+                }
+            });
+        })
+        $("#bt-next").click(function (e) {
             e.preventDefault();
             $.ajax({
                 url: '@Url.Content(string.Format("/Projects/PhotoDetail/{0}", ViewBag.nextP))',
@@ -30,7 +60,7 @@
                 success: function (code_html, statut) {
                     $("#photoContent").find('script').remove();
                     $("#photoContent").html(code_html);
-                } 
+                }
             });
         })
     </script>

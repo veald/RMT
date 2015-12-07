@@ -10,6 +10,7 @@ namespace RMT.Controllers
     {
         public ActionResult Index()
         {
+            ViewBag.fullHeader = 1;
             return View();
         }
 

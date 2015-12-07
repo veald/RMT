@@ -32,6 +32,8 @@
         </div>
     </div>
 
+    @if (ViewBag.fullHeader == 1)
+    {
     <div class="jumbotron image-accueil-background">
         <div class="content-accueil-background">
             <h1>Bienvenue</h1>
@@ -40,7 +42,7 @@
             </p>
         </div>
     </div>
-
+    }
     <div class="container body-content" >
         <div class="main">
             @RenderBody()
