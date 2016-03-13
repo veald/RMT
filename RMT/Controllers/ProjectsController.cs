@@ -46,7 +46,7 @@ namespace RMT.Controllers
             return View(project);
         }
 
-        public PartialViewResult PhotoDetail(int id)
+        public PartialViewResult PhotoDetailAjax(int id)
         {
             int nextPicture;
             int prevPicture;
@@ -106,6 +106,69 @@ namespace RMT.Controllers
 
             ViewBag.prevP = prevPicture;
             
+            return PartialView(p); ;
+        }
+
+        public ActionResult PhotoDetail(int id)
+        {
+            int nextPicture;
+            int prevPicture;
+
+            Picture p = db.Pictures
+                    .Include("Comments")
+                    .Where(x => x.PictureId == id)
+                    .FirstOrDefault();
+
+            if (p == null)
+            {
+                ViewBag.errorMessage = "Erreur";
+                return PartialView("~Views/Shared/Error.cshtml");
+            }
+
+            //get next Id
+            var result = db.Pictures
+                .Where(x => x.ProjectId == p.ProjectId)
+                .Where(x => x.PictureId > id)
+                .Select(x => x.PictureId)
+                .FirstOrDefault();
+
+            if (result != null)
+            {
+                nextPicture = result;
+            }
+            else
+            {
+                nextPicture = db.Pictures
+                    .Where(x => x.ProjectId == p.ProjectId)
+                    .Select(x => x.PictureId)
+                    .FirstOrDefault();
+            }
+
+            ViewBag.nextP = nextPicture;
+
+            //get previous Id
+            result = db.Pictures
+                .OrderByDescending(y => y.PictureId)
+                .Where(x => x.ProjectId == p.ProjectId)
+                .Where(x => x.PictureId < id)
+                .Select(x => x.PictureId)
+                .FirstOrDefault();
+
+            if (result != null)
+            {
+                prevPicture = result;
+            }
+            else
+            {
+                prevPicture = 1;
+                //prevPicture = db.Pictures
+                //    .Where(x => x.ProjectId == p.ProjectId)
+                //    .Select(x => x.PictureId)
+                //    .FirstOrDefault();
+            }
+
+            ViewBag.prevP = prevPicture;
+
             return PartialView(p); ;
         }
 

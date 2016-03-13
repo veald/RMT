@@ -7,6 +7,11 @@
 
 <h2>@Html.DisplayFor(model => model.Name)</h2>
 
+
+<div id="det" class="ph-detail">
+    
+</div>
+
 <div>
     <hr />
     <dl class="dl-horizontal">
@@ -57,11 +62,14 @@
         {
             var img = new FileInfo(item.Path);
             <div class="zoom-container">
-                <img src="@Url.Content(String.Format("/Content/Images/Projects/Project{0}/tn_{1}", Model.ProjectId, img.Name))" class="project-picture" id="@item.PictureId" title="@item.PictureName"/>
+                
+                    <img src="@Url.Content(String.Format("/Content/Images/Projects/Project{0}/tn_{1}", Model.ProjectId, img.Name))" class="project-picture" id="@item.PictureId" title="@item.PictureName" />
+                
             </div>
         }
     </div>
 }
+
 
 
 @section scripts{
@@ -75,17 +83,24 @@
             e.preventDefault();
 
             path = '@Url.Content("/Projects/PhotoDetail/")' + this.id;
+
+            window.location.href=path;
+
+
+
+            /*
             $.jAlert({
                 //'title': this.title,
                 'id': 'jAlertDiv',
                 'ajax': path,
                 'theme': 'black',
                 'size': 'lg',
-                'showAnimation': 'zoomIn',
-                'hideAnimation': 'zoomOut',
+                'showAnimation': 'fadeIn',
+                //'hideAnimation': 'zoomOut',
                 //'onOpen': function () {},
                 'onAjaxFail': function (alert, errorThrown) { alert.closeAlert(); errorAlert(errorThrown); }
             });
+            */
 
         });
     </script>

@@ -219,3 +219,9 @@ textarea {
 #bt-next:hover{
     cursor: pointer; 
 }
+
+.ph-detail{
+    height: 100%;
+    width: 100%;
+    color: #000;
+}
