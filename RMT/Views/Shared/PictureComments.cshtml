@@ -1,0 +1,36 @@
+﻿@model IEnumerable<RMT.Models.Comment>
+
+@{
+    ViewBag.Title = "Index";
+    //Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<hr />
+
+<h5>Commentaires : </h5>
+
+@foreach (var item in Model)
+{
+    <p>
+        <div><b>@Html.DisplayFor(modelItem => item.UserName)</b> [@Html.DisplayFor(modelItem => item.CreatedDate)]</div>
+        <div style="padding-left: 20px;">
+            @Html.DisplayFor(modelItem => item.Body)
+            @if (User.IsInRole("Admin"))
+            {
+                <div style="font-size: 9px;">
+                    @Html.ActionLink("Modifier", "../Comments/Edit", new { id = item.CommentId }) |
+                    @Html.ActionLink("Masquer", "../Comments/Hide", new { id = item.CommentId }) |
+                    @Html.ActionLink("Supprimer", "../Comments/Delete", new { id = item.CommentId })
+                </div>
+
+            }
+
+        </div>
+        <br />
+
+    </p>
+}
+
+
+
+
+

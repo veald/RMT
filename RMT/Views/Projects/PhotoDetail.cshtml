@@ -26,7 +26,18 @@
     
 </div>
 
+
+
 @Html.Partial("PictureComments", Model.Comments)
+
+@if (User.Identity.IsAuthenticated)
+{
+    @Html.Partial("AddComment", new RMT.Models.Comment() { CreatedDate = DateTime.Now, UserName = User.Identity.Name, PictureId = Model.PictureId})
+}
+else
+{
+    <div><span class="glyphicon glyphicon-info-sign"></span> Vous devez être connecté pour ajouter un commentaire. @Html.ActionLink("Connexion", "login", "Account")</div>
+}
 
 <hr />
 

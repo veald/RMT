@@ -56,13 +56,35 @@
 
 @if(Model.Pictures != null)
 {
+
+
     <div class="image-zoom-container">        
         @foreach (var item in Model.Pictures)
         {
             var img = new FileInfo(item.Path);
+
+
+
             <div class="zoom-container">
                 <img src="@Url.Content(String.Format("/Content/Images/Projects/Project{0}/tn_{1}", Model.ProjectId, img.Name))" class="project-picture" id="@item.PictureId" title="@item.PictureName" />
+              
+                <!--      
+                <div class="zoom-caption">
+
+                    @*<h3>@item.PictureName</h3>*@
+                        
+                    @*@if (User.IsInRole("Admin"))
+                    {
+                        <div class="zoom-caption">
+                            <span class="glyphicon glyphicon-pencil"></span> @Html.ActionLink("Définir comme photo de titre", "SetTitlePicture", new { id = item.PictureId })
+                        </div>
+                    }*@
+
+                </div>
+                -->
+
             </div>
+
         }
     </div>
 }
