@@ -11,7 +11,7 @@ namespace RMT.Models
     {
         public int PictureId { get; set; }
 
-        [Display(Name="Pseudo")]
+        [Display(Name="Photo")]
         public string PictureName { get; set; }
 
         public string Description{ get; set; }

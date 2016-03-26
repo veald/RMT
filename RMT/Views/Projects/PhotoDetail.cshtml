@@ -5,18 +5,15 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2></h2>
+<h2>@Model.PictureName</h2>
+<hr />
+<p>@Model.Description</p>
 
-<p>
-    @Html.ActionLink("Retour", "Details", new { id = Model.ProjectId })
-</p>
-
-<div id="photoContent" style="background-color:#000; min-height: 80%; max-height: 100%; width: 100%;">
-
-    <h4>@Model.PictureId - @Model.PictureName</h4>
-    <p>@Model.Description</p>
-
-
+<div style="min-width: 50%; display: inline-block;">
+    <span class="glyphicon glyphicon-backward"></span> @Html.ActionLink("Retour", "Details", new { id = Model.ProjectId })    
+</div>
+<hr />
+<div id="photoContent" style="min-height: 80%; max-height: 100%; width: 100%; padding: 10px;">
 
     <div style="font-size:28px; position: absolute; color: rgba(255,255,255,0.5)">
         <div id="bt-prev" style="display:inline-block"><span class="glyphicon glyphicon-backward"></span></div>
@@ -25,31 +22,17 @@
 
     <img src="@Url.Content(Model.Path)" alt="@Model.Description" style="width: 100%; max-height: 80%; margin:auto;" id="pict_@Model.PictureId" />
 
-    <ul>
-        @foreach (var item in Model.Comments)
-        {
-            <li>
-                <b>@item.UserName - @item.Subject</b> (@item.CreatedDate)
-                <ul>
-                    <li>@item.Body</li>
-                </ul>
-            </li>
-        }
-    </ul>
-
-    @*@Html.RenderPartial("_PictureComments")*@
-
-   @*@Html.RenderAction("Create", "Comments");*@
-
-
+    
+    
 </div>
 
-<p>
-    @*@Html.ActionLink("Edit", "Edit", new { id = Model.PictureId }) |*@
-    @Html.ActionLink("Retour", "Details", new { id = Model.ProjectId })
-</p>
+@Html.Partial("PictureComments", Model.Comments)
 
+<hr />
 
+<div style="min-width: 50%; display: inline-block;">
+    <span class="glyphicon glyphicon-backward"></span> @Html.ActionLink("Retour", "Details", new { id = Model.ProjectId })
+</div>
 
 @section scripts{
     <script type="text/javascript">

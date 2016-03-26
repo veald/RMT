@@ -7,7 +7,6 @@
 
 <h2>@Html.DisplayFor(model => model.Name)</h2>
 
-
 <div id="det" class="ph-detail">
     
 </div>
@@ -62,9 +61,7 @@
         {
             var img = new FileInfo(item.Path);
             <div class="zoom-container">
-                
-                    <img src="@Url.Content(String.Format("/Content/Images/Projects/Project{0}/tn_{1}", Model.ProjectId, img.Name))" class="project-picture" id="@item.PictureId" title="@item.PictureName" />
-                
+                <img src="@Url.Content(String.Format("/Content/Images/Projects/Project{0}/tn_{1}", Model.ProjectId, img.Name))" class="project-picture" id="@item.PictureId" title="@item.PictureName" />
             </div>
         }
     </div>

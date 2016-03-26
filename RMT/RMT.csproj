@@ -375,7 +375,7 @@
     <Content Include="Views\Comments\Details.cshtml" />
     <Content Include="Views\Comments\Edit.cshtml" />
     <Content Include="Views\Comments\Index.cshtml" />
-    <Content Include="Views\Shared\_PictureComments.cshtml" />
+    <Content Include="Views\Shared\PictureComments.cshtml" />
     <Content Include="Views\Shared\AddComment.cshtml" />
   </ItemGroup>
   <ItemGroup>

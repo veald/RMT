@@ -125,6 +125,15 @@ namespace RMT.Controllers
                 return PartialView("~Views/Shared/Error.cshtml");
             }
 
+
+            //var path = Url.Content(p.Path);
+
+            //if (!System.IO.File.Exists(path))
+            //{
+            //    ViewBag.errorMessage = "Erreur";
+            //    return PartialView("~Views/Shared/Error.cshtml");
+            //}
+
             //get next Id
             var result = db.Pictures
                 .Where(x => x.ProjectId == p.ProjectId)
@@ -154,7 +163,7 @@ namespace RMT.Controllers
                 .Select(x => x.PictureId)
                 .FirstOrDefault();
 
-            if (result != null)
+            if (result != null && result != 0)
             {
                 prevPicture = result;
             }
@@ -225,6 +234,8 @@ namespace RMT.Controllers
         {
             if (ModelState.IsValid)
             {
+
+
                 db.Entry(project).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");

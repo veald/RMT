@@ -46,8 +46,33 @@ namespace RMT.Controllers
             }
 
             var comments = db.Comments.Include(c => c.Picture).Where(c => c.PictureId == pictureId);
-            return View(comments.ToList());
+            return PartialView(comments.ToList());
             
+        }
+
+        public ActionResult AddComment()
+        {
+            return PartialView();
+
+        }
+
+        // POST: Comments/Create
+        // Afin de déjouer les attaques par sur-validation, activez les propriétés spécifiques que vous voulez lier. Pour 
+        // plus de détails, voir  http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult AddComment([Bind(Include = "CommentId,PictureId,UserName,Subject,Body,CreatedDate,Hidden")] Comment comment)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Comments.Add(comment);
+                db.SaveChanges();
+                return RedirectToAction("PhotoDetail", "Projects", new { id = comment.PictureId } );
+            }
+            else
+            {
+                return HttpNotFound();
+            }
         }
 
         // GET: Comments/Create
