@@ -78,7 +78,7 @@ namespace RMT.Controllers
                 if (!await UserManager.IsEmailConfirmedAsync(user.Id))
                 {
                     string callbackUrl = await SendEmailConfirmationTokenAsync(user.Id, "RTM - Confirmation de votre adresse e-mail");
-                    ViewBag.errorMessage = "Vous devez confirmer votre e-mail pour pouvoir vous identifier.";
+                    ViewBag.errorMessage = "Vous devez confirmer votre e-mail pour pouvoir vous identifier. Un message de confirmation vous a été envoyé.";
                     return View("Error");
                 }
             }
