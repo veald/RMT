@@ -1,9 +1,11 @@
 ﻿body {
     padding-top: 50px;
-    padding-bottom: 20px;
-    background-color: rgba(0, 0, 0, .9) ;
-    color: #675e4d;
-    font-size: 12px;
+    /*padding-bottom: 20px;*/
+    color:#ddceaf;
+    /*background-color: #675e4d;*/
+    background-color:#222 ;
+    font-size: 14px;
+    height: 100%;
 }
 
 a {
@@ -22,8 +24,8 @@ a:focus {
     position: relative;
     padding-left: 15px;
     padding-right: 15px;
-    /*border: 1px solid #666666;*/
-    //background-color: rgba(3,3,3, .5) ;
+    border: 1px dotted #111;
+    /*background-color: #675e4d;*/
     height: 100%;
     min-height: 100%;
 }
@@ -40,6 +42,10 @@ input,
 select,
 textarea {
     max-width: 280px;
+}
+
+.navbar-inverse {
+    background-color: #111;
 }
 
 .image-zoom-container {
@@ -72,12 +78,13 @@ textarea {
 }
 .zoom-container .zoom-caption {
     position: absolute;
+    text-align:right;
     top: 0;
     right: 0;
     bottom: 0;
     left: 0;
     z-index: 10;
-    background: rgba(0, 0, 0, .5);
+    background: rgba(0, 0, 0, .3);
     -webkit-transition: all .5s ease; /* Safari and Chrome */
         -moz-transition: all .5s ease; /* Firefox */
         -ms-transition: all .5s ease; /* IE 9 */
@@ -164,7 +171,7 @@ textarea {
 .thumbnail {
     background-color: #675e4d;
     padding: 10px;
-    border: 1px black dotted;
+    border: 1px white dotted;
 }
 .thumbnail .caption {
     color: black;
@@ -214,6 +221,12 @@ textarea {
     cursor: pointer; 
 
 }
+
+.zoom-caption:hover{
+    cursor: pointer; 
+
+}
+
 #bt-prev:hover{
     cursor: pointer; 
 }
@@ -225,4 +238,12 @@ textarea {
     height: 100%;
     width: 100%;
     color: #000;
+}
+
+#photoContent{
+    min-height: 80%; 
+    max-height: 100%; 
+    width: 100%; 
+    padding: 10px; 
+    background-color: #000;
 }

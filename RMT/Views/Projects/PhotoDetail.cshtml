@@ -12,21 +12,32 @@
 <div style="min-width: 50%; display: inline-block;">
     <span class="glyphicon glyphicon-backward"></span> @Html.ActionLink("Retour", "Details", new { id = Model.ProjectId })    
 </div>
+
 <hr />
-<div id="photoContent" style="min-height: 80%; max-height: 100%; width: 100%; padding: 10px;">
+
+
+<div id="photoContent">
 
     <div style="font-size:28px; position: absolute; color: rgba(255,255,255,0.5)">
         <div id="bt-prev" style="display:inline-block"><span class="glyphicon glyphicon-backward"></span></div>
         <div id="bt-next" style="display:inline-block"><span class="glyphicon glyphicon-forward"></span></div>
+
+        @if (User.IsInRole("Admin"))
+        {
+            <div id="bt-fav" style="display:inline-block">
+                <a href="~/Projects/SetTitlePicture/@Model.PictureId" class="fav-pict" title="Définir comme photo de titre" style="color:rgba(255,255,255,0.5);">
+                    <span class="glyphicon glyphicon-star" style="font-size:28px;"></span>
+                </a>
+            </div>
+
+        }
+
+
     </div>
 
     <img src="@Url.Content(Model.Path)" alt="@Model.Description" style="width: 100%; max-height: 80%; margin:auto;" id="pict_@Model.PictureId" />
-
-    
     
 </div>
-
-
 
 @Html.Partial("PictureComments", Model.Comments)
 
@@ -55,5 +66,22 @@ else
             url = '@Url.Content(string.Format("/Projects/PhotoDetail/{0}", ViewBag.nextP))';
             location.href = url;
         })
+
+        $(".fav-pict").click(function (e) {
+
+            e.preventDefault();
+
+            path = this.href;
+
+            $.ajax({
+                url: path,
+                dataType: 'html',
+                success: function (code_html, statut) {
+                    alert("La photo de titre a été mise à jour");
+                }
+            });
+
+        });
+
     </script>
 }

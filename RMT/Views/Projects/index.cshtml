@@ -14,11 +14,13 @@
         <p>
             Nam finibus est id diam posuere hendrerit. Curabitur egestas quam sed egestas suscipit. Praesent euismod commodo facilisis. Nullam sed lobortis magna. Sed auctor vulputate lectus non pellentesque. Nam laoreet dui id erat semper volutpat. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Donec at consectetur diam, nec sollicitudin mi. Etiam vulputate mi nec malesuada rutrum.
         </p>
+        
+        <p>
+            <span class="glyphicon glyphicon-backward"></span> @Html.ActionLink("Retour", "Index", "Home")
+        </p>
+
     </div>
 
-    <div>
-        <span class="glyphicon glyphicon-backward"></span> @Html.ActionLink("Retour", "Index", "Home")
-    </div>
     
     <hr />
 
@@ -29,7 +31,6 @@
             @Html.ActionLink("Créer un nouveau projet", "Create")
         </p>
     }
-
 
     @foreach (var item in Model)
     {

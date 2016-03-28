@@ -111,8 +111,6 @@ namespace RMT.Controllers
 
         public ActionResult PhotoDetail(int id)
         {
-            int nextPicture;
-            int prevPicture;
 
             Picture p = db.Pictures
                     .Include("Comments")
@@ -122,61 +120,54 @@ namespace RMT.Controllers
             if (p == null)
             {
                 ViewBag.errorMessage = "Erreur";
-                return PartialView("~Views/Shared/Error.cshtml");
+                return PartialView("~/Views/Shared/Error.cshtml");                
             }
 
+            int projectId = p.ProjectId;
+            int currentId = p.PictureId;
+            
+            int firstId = db.Pictures
+                .Where(x => x.ProjectId == projectId)
+                .Min(x => x.PictureId);
 
-            //var path = Url.Content(p.Path);
+            int lastId = db.Pictures
+                .Where(x => x.ProjectId == projectId)
+                .Max(x => x.PictureId);
 
-            //if (!System.IO.File.Exists(path))
-            //{
-            //    ViewBag.errorMessage = "Erreur";
-            //    return PartialView("~Views/Shared/Error.cshtml");
-            //}
-
-            //get next Id
-            var result = db.Pictures
-                .Where(x => x.ProjectId == p.ProjectId)
-                .Where(x => x.PictureId > id)
-                .Select(x => x.PictureId)
-                .FirstOrDefault();
-
-            if (result != null)
-            {
-                nextPicture = result;
-            }
-            else
-            {
-                nextPicture = db.Pictures
-                    .Where(x => x.ProjectId == p.ProjectId)
+            int previousId = db.Pictures
+                    .OrderByDescending(y => y.PictureId)
+                    .Where(x => x.ProjectId == projectId)
+                    .Where(x => x.PictureId < currentId)
                     .Select(x => x.PictureId)
                     .FirstOrDefault();
-            }
 
-            ViewBag.nextP = nextPicture;
-
-            //get previous Id
-            result = db.Pictures
-                .OrderByDescending(y => y.PictureId)
-                .Where(x => x.ProjectId == p.ProjectId)
-                .Where(x => x.PictureId < id)
-                .Select(x => x.PictureId)
-                .FirstOrDefault();
-
-            if (result != null && result != 0)
+            int nextId = db.Pictures
+                    .OrderBy(y => y.PictureId)
+                    .Where(x => x.ProjectId == projectId)
+                    .Where(x => x.PictureId > currentId)
+                    .Select(x => x.PictureId)
+                    .FirstOrDefault();
+            
+            if(currentId == lastId)
             {
-                prevPicture = result;
-            }
-            else
-            {
-                prevPicture = 1;
-                //prevPicture = db.Pictures
-                //    .Where(x => x.ProjectId == p.ProjectId)
-                //    .Select(x => x.PictureId)
-                //    .FirstOrDefault();
+                nextId = firstId;
             }
 
-            ViewBag.prevP = prevPicture;
+            if (currentId == firstId)
+            {
+                previousId = lastId;
+            }
+
+            ViewBag.nextP = nextId;
+            ViewBag.prevP = previousId;
+
+
+            //int PicturesCount = db.Pictures
+            //       .Where(x => x.ProjectId == projectId)
+            //       .Count();
+
+            //ViewBag.nbPict = PicturesCount;
+
 
             return PartialView(p); ;
         }
@@ -234,8 +225,6 @@ namespace RMT.Controllers
         {
             if (ModelState.IsValid)
             {
-
-
                 db.Entry(project).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -409,7 +398,29 @@ namespace RMT.Controllers
             }
             
         }
+    
+        public void SetTitlePicture(int id)
+        {
+            //db.Projects.Find(id).ImagePath = "~/Content/Images/motorcycle-default.jpg";
+            using (ProjectContext ctx = new ProjectContext())
+            {
 
-        
+                var picture = ( from pict in ctx.Pictures
+                                where pict.PictureId == id
+                                select pict).First();
+
+                var project = (from pict in ctx.Pictures
+                             join proj in ctx.Projects
+                             on pict.ProjectId equals proj.ProjectId
+                             where pict.PictureId == id
+                             select proj).First();
+
+                project.ImagePath = picture.Path;
+                
+                int result = ctx.SaveChanges();
+
+            }
+
+        }
     }
 }

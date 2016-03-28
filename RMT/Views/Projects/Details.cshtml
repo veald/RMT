@@ -66,22 +66,21 @@
 
 
             <div class="zoom-container">
-                <img src="@Url.Content(String.Format("/Content/Images/Projects/Project{0}/tn_{1}", Model.ProjectId, img.Name))" class="project-picture" id="@item.PictureId" title="@item.PictureName" />
-              
-                <!--      
-                <div class="zoom-caption">
 
-                    @*<h3>@item.PictureName</h3>*@
-                        
-                    @*@if (User.IsInRole("Admin"))
-                    {
-                        <div class="zoom-caption">
-                            <span class="glyphicon glyphicon-pencil"></span> @Html.ActionLink("Définir comme photo de titre", "SetTitlePicture", new { id = item.PictureId })
-                        </div>
-                    }*@
+                <img src="@Url.Content(String.Format("/Content/Images/Projects/Project{0}/tn_{1}", Model.ProjectId, img.Name))" class="project-picture"  />
+              
+                   
+                <div class="zoom-caption"  id="@item.PictureId" title="@item.PictureName">
+
+                    <h3>@item.PictureName</h3>
+                    
+                    <div class="zoom-caption">
+
+                    </div>
+
 
                 </div>
-                -->
+                
 
             </div>
 
@@ -97,30 +96,14 @@
 
         });
 
-        $(".project-picture").click(function (e) {
+        $(".zoom-caption").click(function (e) {
 
             e.preventDefault();
 
             path = '@Url.Content("/Projects/PhotoDetail/")' + this.id;
-
             window.location.href=path;
 
-
-
-            /*
-            $.jAlert({
-                //'title': this.title,
-                'id': 'jAlertDiv',
-                'ajax': path,
-                'theme': 'black',
-                'size': 'lg',
-                'showAnimation': 'fadeIn',
-                //'hideAnimation': 'zoomOut',
-                //'onOpen': function () {},
-                'onAjaxFail': function (alert, errorThrown) { alert.closeAlert(); errorAlert(errorThrown); }
-            });
-            */
-
         });
+
     </script>
 }
