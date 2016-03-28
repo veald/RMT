@@ -302,7 +302,7 @@ namespace RMT.Controllers
                         var thumbsPath = string.Format("{0}\\tn_{1}", pathString, file.FileName);
                         FileHelper.SaveResizedImage(pathString, file.FileName, thumbsPath, 30);
 
-                        var relativePath = string.Format("~Content/Images/Projects/Project{0}/{1}", picture.ProjectId, file.FileName);
+                        var relativePath = string.Format("~/Content/Images/Projects/Project{0}/{1}", picture.ProjectId, file.FileName);
                         
                         if (ModelState.IsValid)
                         {
