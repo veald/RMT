@@ -196,7 +196,7 @@ textarea {
     color: #ddceaf;
 }
 .caption a {
-    color: black;
+    /*color: black;*/
     text-decoration:underline;
 }
 
