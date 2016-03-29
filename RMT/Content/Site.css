@@ -166,10 +166,6 @@ textarea {
     position: relative;
 }
 
-.btn-project{
-    background-image: url('images/Home/accueil_01_web.jpg');
-}
-
 .texted-image { 
    position: relative; 
    width: 100%; /* for IE 6 */
