@@ -2,7 +2,6 @@
 
 @{
     ViewBag.Title = "Index";
-    //Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h5>Commentaires : </h5>
@@ -20,9 +19,7 @@
                     @Html.ActionLink("Masquer", "../Comments/Hide", new { id = item.CommentId }) |
                     @Html.ActionLink("Supprimer", "../Comments/Delete", new { id = item.CommentId })
                 </div>
-
             }
-
         </div>
         <br />
 

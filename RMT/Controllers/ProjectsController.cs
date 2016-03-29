@@ -401,7 +401,6 @@ namespace RMT.Controllers
     
         public void SetTitlePicture(int id)
         {
-            //db.Projects.Find(id).ImagePath = "~/Content/Images/motorcycle-default.jpg";
             using (ProjectContext ctx = new ProjectContext())
             {
 
@@ -418,9 +417,7 @@ namespace RMT.Controllers
                 project.ImagePath = picture.Path;
                 
                 int result = ctx.SaveChanges();
-
             }
-
         }
     }
 }

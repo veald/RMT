@@ -15,7 +15,6 @@
 
 <hr />
 
-
 <div id="photoContent">
 
     <div style="font-size:28px; position: absolute; color: rgba(255,255,255,0.5)">
@@ -29,9 +28,7 @@
                     <span class="glyphicon glyphicon-star" style="font-size:28px;"></span>
                 </a>
             </div>
-
         }
-
 
     </div>
 
@@ -58,10 +55,12 @@ else
 
 @section scripts{
     <script type="text/javascript">
+
         $("#bt-prev").click(function (e) {
             url = '@Url.Content(string.Format("/Projects/PhotoDetail/{0}", ViewBag.prevP))';
             location.href = url;
         })
+
         $("#bt-next").click(function (e) {
             url = '@Url.Content(string.Format("/Projects/PhotoDetail/{0}", ViewBag.nextP))';
             location.href = url;
@@ -80,7 +79,6 @@ else
                     alert("La photo de titre a été mise à jour");
                 }
             });
-
         });
 
     </script>
