@@ -111,7 +111,6 @@ namespace RMT.Controllers
 
         public ActionResult PhotoDetail(int id)
         {
-
             Picture p = db.Pictures
                     .Include("Comments")
                     .Where(x => x.PictureId == id)
@@ -160,14 +159,6 @@ namespace RMT.Controllers
 
             ViewBag.nextP = nextId;
             ViewBag.prevP = previousId;
-
-
-            //int PicturesCount = db.Pictures
-            //       .Where(x => x.ProjectId == projectId)
-            //       .Count();
-
-            //ViewBag.nbPict = PicturesCount;
-
 
             return PartialView(p); ;
         }
