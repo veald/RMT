@@ -11,12 +11,18 @@
 a {
     color: #b1a48b;
     text-decoration: none;
+    font-weight: bold;
 }
 
 a:hover,
 a:focus {
     color: #ddceaf;
     text-decoration: underline;
+}
+
+hr{
+    border-top: 1px gray dotted;
+    border-bottom: 0px black dashed;
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -26,6 +32,7 @@ a:focus {
     padding-right: 15px;
     border: 1px dotted #111;
     /*background-color: #675e4d;*/
+    background-color: rgba(255, 255, 255, .01);
     height: 100%;
     min-height: 100%;
 }
@@ -130,17 +137,26 @@ textarea {
 
 .image-accueil-background {
     background-image: url('images/Home/accueil_01_web.jpg');
-    background-size: auto;
+    /*background-size: auto;*/
+    background-size: 1170px;
+
     background-position: center;
+    background-repeat: no-repeat;
+    background-color: #222;
 }
 
 .content-accueil-background{
     color: #ffffff;
-    text-shadow: 3px 2px 1px rgba(0,0,0,0.9);
-    
-    
+    text-shadow: 1px 1px 1px rgba(0,0,0,0.9);
+    height: 220px
 }
+
+.content-accueil-background h1{
+    font-size: 75px;
+}
+
 .home-title {
+    
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     text-shadow: 1px 1px 1px #000000;
 }
@@ -169,12 +185,15 @@ textarea {
    /*width: 100%;*/ 
 }
 .thumbnail {
-    background-color: #675e4d;
+    /*background-color: #675e4d;*/
+    background-color: rgba(0,0,0,0.2);
     padding: 10px;
-    border: 1px white dotted;
+    border: 1px black dotted;
+    
 }
 .thumbnail .caption {
-    color: black;
+    /*color: black;*/
+    color: #ddceaf;
 }
 .caption a {
     color: black;
@@ -229,9 +248,11 @@ textarea {
 
 #bt-prev:hover{
     cursor: pointer; 
+    color: rgba(255, 255 ,255, 0.9);
 }
 #bt-next:hover{
     cursor: pointer; 
+    color: rgba(255, 255 ,255, 0.9);
 }
 
 .ph-detail{
@@ -240,10 +261,14 @@ textarea {
     color: #000;
 }
 
-#photoContent{
-    min-height: 80%; 
-    max-height: 100%; 
-    width: 100%; 
-    padding: 10px; 
-    background-color: #000;
+#photoContent {
+    min-height: 80%;
+    max-height: 100%;
+    width: 100%;
+    padding: 10px;
+    /*background-color: #000;*/
+    background-color: rgba(0,0,0,0.2);
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
 }

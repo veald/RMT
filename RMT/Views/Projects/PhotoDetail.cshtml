@@ -6,7 +6,8 @@
 }
 
 <h2>@Model.PictureName</h2>
-<hr />
+
+
 <p>@Model.Description</p>
 
 <div style="min-width: 50%; display: inline-block;">
@@ -33,19 +34,20 @@
     </div>
 
     <img src="@Url.Content(Model.Path)" alt="@Model.Description" style="width: 100%; max-height: 80%; margin:auto;" id="pict_@Model.PictureId" />
-    
+
+
+    @Html.Partial("PictureComments", Model.Comments)
+
+    @if (User.Identity.IsAuthenticated)
+    {
+        @Html.Partial("AddComment", new RMT.Models.Comment() { CreatedDate = DateTime.Now, UserName = User.Identity.Name, PictureId = Model.PictureId })
+    }
+    else
+    {
+        <div><span class="glyphicon glyphicon-info-sign"></span> Vous devez être connecté pour ajouter un commentaire. @Html.ActionLink("Connexion", "login", "Account")</div>
+    }
+
 </div>
-
-@Html.Partial("PictureComments", Model.Comments)
-
-@if (User.Identity.IsAuthenticated)
-{
-    @Html.Partial("AddComment", new RMT.Models.Comment() { CreatedDate = DateTime.Now, UserName = User.Identity.Name, PictureId = Model.PictureId})
-}
-else
-{
-    <div><span class="glyphicon glyphicon-info-sign"></span> Vous devez être connecté pour ajouter un commentaire. @Html.ActionLink("Connexion", "login", "Account")</div>
-}
 
 <hr />
 
