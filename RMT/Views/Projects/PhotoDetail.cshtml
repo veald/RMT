@@ -27,15 +27,20 @@
 
     <p>@Model.Description</p>
     
-    <hr />
 
 
 
-    <div class="fb-like"
+    @*<div class="fb-like"
          data-share="true"
          data-width="450"
          data-show-faces="true">
-    </div>
+    </div>*@
+    
+
+    <a href="#" class="my-fb-link" title="Partager...">
+        Share
+        @*<div class="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-layout="icon_link"></div>*@
+    </a>
 
     <hr />
 
@@ -52,7 +57,7 @@
 
 </div>
 
-<hr />
+<br />
 
 <div style="min-width: 50%; display: inline-block;">
     <span class="glyphicon glyphicon-backward"></span> @Html.ActionLink("Retour", "Details", new { id = Model.ProjectId })
@@ -87,21 +92,57 @@
         });
 
         window.fbAsyncInit = function () {
+
             FB.init({
                 appId: '1575603866086319',
                 xfbml: true,
                 version: 'v2.5'
             });
+
+
+            @*FB.ui(
+              {
+                  method: 'share',
+                  link: document.location.href,
+                  caption: '@Model.PictureName',
+                  description: '@Model.Description',
+                  picture: '@Url.Content(Model.Path)'
+              },
+              // callback
+              function (response) {
+                  if (response && !response.error_message) {
+                      alert('Posting completed.');
+                  } else {
+                      alert('Error while posting.');
+                  }
+              }
+            );*@
         };
 
         (function (d, s, id) {
             var js, fjs = d.getElementsByTagName(s)[0];
             if (d.getElementById(id)) { return; }
             js = d.createElement(s); js.id = id;
-            js.src = "//connect.facebook.net/en_US/sdk.js";
+            js.src = "//connect.facebook.net/fr_FR/sdk.js";
             fjs.parentNode.insertBefore(js, fjs);
         }(document, 'script', 'facebook-jssdk'));
 
+
+        $('.my-fb-link').click(function (e) {
+            
+            e.preventDefault();
+
+            FB.ui({
+                method: 'feed',
+                name: 'Facebook Dialogs',
+                link: document.location.href,
+                caption: '@Model.PictureName',
+                description: '@Model.Description',
+                picture: '@string.Format("http://miltondedieu.azurewebsites.net{0}", Url.Content(Model.Path))'
+            });
+            
+        });
+        
 
     </script>
 }

@@ -9,8 +9,10 @@
 @foreach (var item in Model)
 {
     <p>
-        <div><b>@Html.DisplayFor(modelItem => item.UserName)</b> [@Html.DisplayFor(modelItem => item.CreatedDate)]</div>
-        <div style="padding-left: 20px;">
+        <div style="background-color: rgba(0,0,0,0.1);">
+            <b>@Html.DisplayFor(modelItem => item.UserName)</b> [@Html.DisplayFor(modelItem => item.CreatedDate)]
+        </div>
+        <div style="padding-left: 20px; background-color: rgba(0,0,0,0.1);">
             @Html.DisplayFor(modelItem => item.Body)
             @if (User.IsInRole("Admin"))
             {
@@ -21,8 +23,6 @@
                 </div>
             }
         </div>
-        <hr />
-
     </p>
 }
 
