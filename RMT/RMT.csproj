@@ -214,6 +214,7 @@
     <Content Include="Content\colorbox.css" />
     <Content Include="Content\images\border.png" />
     <Content Include="Content\images\controls.png" />
+    <Content Include="Content\images\fb-icon-grey-20.png" />
     <Content Include="Content\images\Home\accueil_01_web.jpg" />
     <Content Include="Content\images\loading.gif" />
     <Content Include="Content\images\loading_background.png" />

@@ -38,8 +38,7 @@
     
 
     <a href="#" class="my-fb-link" title="Partager...">
-        Share
-        @*<div class="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-layout="icon_link"></div>*@
+        <img src="~/Content/images/fb-icon-grey-20.png" /> Partager
     </a>
 
     <hr />
@@ -99,24 +98,6 @@
                 version: 'v2.5'
             });
 
-
-            @*FB.ui(
-              {
-                  method: 'share',
-                  link: document.location.href,
-                  caption: '@Model.PictureName',
-                  description: '@Model.Description',
-                  picture: '@Url.Content(Model.Path)'
-              },
-              // callback
-              function (response) {
-                  if (response && !response.error_message) {
-                      alert('Posting completed.');
-                  } else {
-                      alert('Error while posting.');
-                  }
-              }
-            );*@
         };
 
         (function (d, s, id) {
@@ -134,7 +115,7 @@
 
             FB.ui({
                 method: 'feed',
-                name: 'Facebook Dialogs',
+                name: 'Resman Motorcycle Torrefactoring',
                 link: document.location.href,
                 caption: '@Model.PictureName',
                 description: '@Model.Description',
