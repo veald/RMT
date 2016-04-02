@@ -160,7 +160,7 @@ namespace RMT.Controllers
             ViewBag.nextP = nextId;
             ViewBag.prevP = previousId;
 
-            return PartialView(p); ;
+            return PartialView(p);
         }
 
         [Authorize(Roles = "Admin")]
