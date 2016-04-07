@@ -1,3 +1,8 @@
+#web.config
+Web.config
+Web.Debug.config
+Web.Release.config
+
 # Windows image file caches
 Thumbs.db
 ehthumbs.db
