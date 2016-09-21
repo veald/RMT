@@ -22,7 +22,10 @@ namespace RMT.Controllers
         {
             return View(db.Projects.ToList());
         }
-
+        public ActionResult ProjectsList()
+        {
+            return View(db.Projects.ToList());
+        }
         // GET: Projects/Details/5
         public ActionResult Details(int? id)
         {
@@ -409,6 +412,16 @@ namespace RMT.Controllers
                 
                 int result = ctx.SaveChanges();
             }
+        }
+
+        public ActionResult DeletePicture(int id)
+        {
+
+            Picture picture = db.Pictures.Find(id);
+            db.Pictures.Remove(picture);
+            db.SaveChanges();
+
+            return RedirectToAction("Details", "Projects", new { id = picture.ProjectId });
         }
     }
 }

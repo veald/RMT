@@ -1,0 +1,25 @@
+﻿@model IEnumerable<RMT.Models.Project>
+@using GridMvc.Html
+
+<div class="col-md-12">
+    <h1>
+        Vos Projets
+    </h1>
+    <p>
+        Nam finibus est id diam posuere hendrerit. Curabitur egestas quam sed egestas suscipit. Praesent euismod commodo facilisis. Nullam sed lobortis magna. Sed auctor vulputate lectus non pellentesque. Nam laoreet dui id erat semper volutpat. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Donec at consectetur diam, nec sollicitudin mi. Etiam vulputate mi nec malesuada rutrum.
+    </p>
+    <p>
+        <span class="glyphicon glyphicon-backward"></span> @Html.ActionLink("Retour", "Index", "Home")
+    </p>
+</div>
+
+<div class="col-md-12">
+
+    @Html.Grid(Model).Columns(columns =>
+    {
+        columns.Add(foo => foo.Name).Filterable(true).SetWidth(110);
+        columns.Add(foo => foo.Description).Sortable(true);
+        columns.Add(foo => foo.BeginDate).Filterable(true);
+    }).WithPaging(20)
+
+</div>

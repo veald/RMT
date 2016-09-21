@@ -11,6 +11,7 @@
     <NameOfLastUsedPublishProfile>miltondedieu - Web Deploy %284%29</NameOfLastUsedPublishProfile>
     <WebStackScaffolding_DbContextTypeFullName>RMT.Models.ProjectContext</WebStackScaffolding_DbContextTypeFullName>
     <WebStackScaffolding_IsViewGenerationSelected>True</WebStackScaffolding_IsViewGenerationSelected>
+    <UseIISExpress>true</UseIISExpress>
   </PropertyGroup>
   <ProjectExtensions>
     <VisualStudio>

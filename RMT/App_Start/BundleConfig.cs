@@ -35,12 +35,15 @@ namespace RMT
                      "~/Scripts/jAlert/jAlert-functions.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/MyScripts").Include(
-                     "~/Scripts/MyScripts.js"));
+                     "~/Scripts/MyScripts.js",
+                     "~/Scripts/gridmvc.min.js"));
             
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/colorbox.css",
-                      "~/Scripts/dropzone/css/basic.css",
+                      "~/Content/Gridmvc.css",
+                      "~/Content/gridmvc.datepicker.css",
+                      "~/Scripts/dropzone/css/basic.css ",
                       "~/Scripts/dropzone/css/dropzone.css",
                       "~/Content/bootstrap-fileinput/css/fileinput.css",
                       "~/Content/jAlert-v3.css",

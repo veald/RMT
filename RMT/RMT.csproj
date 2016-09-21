@@ -54,6 +54,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="GridMvc, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Grid.Mvc.3.0.0\lib\net40\GridMvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Newtonsoft.Json, Version=7.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.7.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
@@ -193,6 +197,15 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\FileHelper.cs" />
+    <Compile Include="Migrations\201511102329547_InitialCreate.cs" />
+    <Compile Include="Migrations\201511102329547_InitialCreate.Designer.cs">
+      <DependentUpon>201511102329547_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201609212024465_AddingPublicProjects.cs" />
+    <Compile Include="Migrations\201609212024465_AddingPublicProjects.Designer.cs">
+      <DependentUpon>201609212024465_AddingPublicProjects.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Comment.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -212,6 +225,9 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\colorbox.css" />
+    <Content Include="Content\Gridmvc.css" />
+    <Content Include="Content\gridmvc.datepicker.css" />
+    <Content Include="Content\gridmvc.datepicker.min.css" />
     <Content Include="Content\images\border.png" />
     <Content Include="Content\images\controls.png" />
     <Content Include="Content\images\fb-icon-grey-20.png" />
@@ -224,9 +240,11 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Scripts\bootstrap-datepicker.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ClassDiagram1.cd" />
+    <Content Include="Grid.mvc.readme" />
     <None Include="Properties\PublishProfiles\miltondedieu - FTP %284%29.pubxml" />
     <None Include="Properties\PublishProfiles\miltondedieu - Web Deploy %284%29.pubxml" />
     <None Include="Properties\PublishProfiles\motorcycle-torrefactory - FTP.pubxml" />
@@ -255,6 +273,9 @@
     <Content Include="Scripts\fileinput_locale_th.js" />
     <Content Include="Scripts\fileinput_locale_uk.js" />
     <Content Include="Scripts\fileinput_locale_zh.js" />
+    <Content Include="Scripts\gridmvc.js" />
+    <Content Include="Scripts\gridmvc.lang.ru.js" />
+    <Content Include="Scripts\gridmvc.min.js" />
     <Content Include="Scripts\jAlert\jAlert-functions.js" />
     <Content Include="Scripts\jAlert\jAlert-functions.min.js" />
     <Content Include="Scripts\jAlert\jAlert-v3.js" />
@@ -328,6 +349,9 @@
     <Content Include="Views\Comments\Index.cshtml" />
     <Content Include="Views\Shared\PictureComments.cshtml" />
     <Content Include="Views\Shared\AddComment.cshtml" />
+    <Content Include="Views\Projects\ProjectsList.cshtml" />
+    <Content Include="Views\Shared\_GridPager.cshtml" />
+    <Content Include="Views\Shared\_Grid.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -339,6 +363,14 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201511102329547_InitialCreate.resx">
+      <DependentUpon>201511102329547_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201609212024465_AddingPublicProjects.resx">
+      <DependentUpon>201609212024465_AddingPublicProjects.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

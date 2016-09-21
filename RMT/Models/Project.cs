@@ -24,6 +24,8 @@ namespace RMT.Models
         [Display(Name = "Date de fin")]
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
         public DateTime? EndDate { get; set; }
+        public bool ExternalProject { get; set; }
+        public bool Visible { get; set; }
 
         public ICollection<Picture> Pictures { get; set; }
         

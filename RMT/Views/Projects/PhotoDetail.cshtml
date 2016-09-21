@@ -19,6 +19,12 @@
                     <span class="glyphicon glyphicon-star" style="font-size:28px;"></span>
                 </a>
             </div>
+            <div id="bt-fav" style="display:inline-block">
+                <a href="~/Projects/DeletePicture/@Model.PictureId" class="del-pict" title="Supprimer la photo" style="color:rgba(255,255,255,0.5);">
+                    <span class="glyphicon glyphicon-trash" style="font-size:28px;"></span>
+                </a>
+            </div>
+
         }
     </div>
 
@@ -79,6 +85,11 @@
             });
         });
 
+        $(".del-pict").click(function (e) {
+            url = '@Url.Content(string.Format("/Projects/DeletePicture/{0}", ViewBag.nextP))';
+            location.href = url;
+        })
+
         window.fbAsyncInit = function () {
 
             FB.init({
@@ -99,7 +110,7 @@
 
 
         $('.my-fb-link').click(function (e) {
-            
+
             e.preventDefault();
 
             FB.ui({
@@ -110,9 +121,9 @@
                 description: '@Model.Description',
                 picture: '@string.Format("http://miltondedieu.azurewebsites.net{0}", Url.Content(Model.Path))'
             });
-            
+
         });
-        
+
 
     </script>
 }
